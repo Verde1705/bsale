@@ -5,14 +5,17 @@
 import unittest
 
 import bsale
-# from bsale import *
+
+from bsale import *
 
 
 class ProductTestCase(unittest.TestCase):
 
     def test_get_products(self):
 
-        self.client = bsale.API()
-        products = self.client.product.Get()
+        self.product = bsale.Product()
+        products = self.product.Get()
 
-        self.assertIn("items", products)
+        print products
+
+        # self.assertIn("items", products)
