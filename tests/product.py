@@ -57,4 +57,4 @@ class ProductTestCase(unittest.TestCase):
         id_product=2334
         product = self.product.Remove(id_product)
 
-        print product
+        # print product

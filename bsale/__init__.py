@@ -4,9 +4,11 @@
 
 from .src.product import Product
 from .src.api import API
+from .src.document import Document
 
 
 __all__ = [
     "API",
-    "Product"
+    "Product", 
+    "Document"
 ]

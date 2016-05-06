@@ -6,9 +6,11 @@ import unittest
 
 
 from product import ProductTestCase
+from document import DocumentTestCase
 
 __all__ = [
-    "ProductTestCase"
+    "ProductTestCase",
+    "DocumentTestCase"
 ]
 
 
