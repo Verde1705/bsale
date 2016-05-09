@@ -91,10 +91,7 @@ class Document():
 
         return r.json()
 
-    def Create(self):
-        pass
-
-
+    def Create(self, params):
         # Ejemplo de estructura JSON
 
         # {
@@ -149,5 +146,51 @@ class Document():
         #   ]
         # }
 
+        # data = {
+        #   "name": name,
+        #   "description": description,
+        #   "allowDecimal": allowDecimal,
+        #   "ledgerAccount": ledgerAccount,
+        #   "costCenter": costCenter,
+        #   "stockControl": costCenter  
+        # }
 
-        
+        # print "dataaaaa   -----  {}".format(params) 
+
+        url = Environment.URL+'documents.json'
+        access_token=Environment.AccessToken
+
+        headers= {'Content-type': 'application/json',
+                  'Accept': 'application/json',
+                  'access_token':access_token}
+
+        r = requests.post(url, data=json.dumps(params), headers=headers)
+
+        return r.json()
+
+    def UpdateStateSII(self,idDocument, state):
+        # PUT /v1/documents/set_sii_state.json
+        # En caso de necesitar el cambio de estado que indica si el documento fue declarado en el SII, se debe enviar un json con la siguiente estructura:
+        # informedSii, indica si el documento fue informado al SII, 0 es correcto, 1 es enviado, 2 es rechazado (Integer).
+        # {
+        #    "id": 382,
+        #    "informedSii": 1
+        # }
+
+        data = {
+          "id":idDocument, 
+          "informedSii":state
+        }
+
+        url = Environment.URL+'documents/set_sii_state.json'
+        access_token=Environment.AccessToken
+
+        headers= {'Content-type': 'application/json',
+                  'Accept': 'application/json',
+                  'access_token':access_token}
+
+        r = requests.put(url, data=json.dumps(data), headers=headers)
+
+        return r.json()
+
+
