@@ -6,15 +6,19 @@ import unittest
 
 import bsale
 
-from bsale import *
-
 
 class ProductTestCase(unittest.TestCase):
 
     def test_get_products(self):
+        products = bsale.Product.Get()
 
-        self.product = bsale.Product()
-        products = self.product.Get()
+        assert "count" in products
+        assert "items" in products
+        assert "limit" in products
+        assert "offset" in products
+
+        # self.product = bsale.Product()
+        # products = self.product.Get()
 
         # print products
 

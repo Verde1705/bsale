@@ -10,7 +10,8 @@ class Product():
     def test(self):
         print "llega"
 
-    def Get(self):
+    @classmethod
+    def Get(cls):
         #lista de productos
 
         # Parametros

@@ -39,6 +39,7 @@ class DocumentTestCase(unittest.TestCase):
     #       },
     #       "details": [
     #         {
+            
     #           "netUnitValue": 53975,
     #           "quantity": 1,
     #           "taxId":  "[1]",
