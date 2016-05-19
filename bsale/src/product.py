@@ -130,7 +130,7 @@ class Product():
           "allowDecimal": allowDecimal,
           "ledgerAccount": ledgerAccount,
           "costCenter": costCenter,
-          "stockControl": costCenter  
+          "stockControl": stockControl  
         }
 
         url = Environment.URL+'products/'+str(idProduct)+'.json'
