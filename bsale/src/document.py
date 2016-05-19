@@ -9,6 +9,7 @@ from constants import Environment
 
 class Document():
 
+    @classmethod
     def Get(self,
             limit=25,
             offset=0,
@@ -71,6 +72,7 @@ class Document():
 
         return r.json()
 
+    @classmethod
     def GetOneDocument(self, idDocument):
         # GET /v1/documents/421.json retorna un documento específico.
         # Parametros
@@ -90,7 +92,8 @@ class Document():
         r = requests.get(url, headers=headers)
 
         return r.json()
-
+        
+    @classmethod
     def Create(self, params):
         # Ejemplo de estructura JSON
 
@@ -168,6 +171,7 @@ class Document():
 
         return r.json()
 
+    @classmethod
     def UpdateStateSII(self,idDocument, state):
         # PUT /v1/documents/set_sii_state.json
         # En caso de necesitar el cambio de estado que indica si el documento fue declarado en el SII, se debe enviar un json con la siguiente estructura:

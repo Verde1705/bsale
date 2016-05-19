@@ -44,6 +44,7 @@ class Product():
 
         return r.json()
 
+    @classmethod
     def GetOneProduct(self, idProduct):
 
         # Parametros
@@ -65,6 +66,7 @@ class Product():
 
         return r.json()
 
+    @classmethod
     def Create(self,
                    name="",
                    description="",
@@ -104,6 +106,7 @@ class Product():
 
         return r.json()
 
+    @classmethod
     def Update(self,
             idProduct,
             name="",
@@ -141,6 +144,7 @@ class Product():
 
         return r.json()
 
+    @classmethod
     def Remove(self,idProduct):
         # DELETE /v1/products/97.json cambia el estado del producto.
 
