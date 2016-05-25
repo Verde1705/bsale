@@ -5,10 +5,14 @@
 from .src.product import Product
 from .src.api import API
 from .src.document import Document
+from .src.stock import Stock
+from .src.variant import Variant
 
 
 __all__ = [
     "API",
     "Product", 
-    "Document"
+    "Document",
+    "Stock",
+    "Variant"
 ]
