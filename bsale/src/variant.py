@@ -11,8 +11,8 @@ class Variant():
 
     @classmethod
     def Get(self,
-            limit=25,
-            offset=0,
+            limit=None,
+            offset=None,
             fields=None,
             expand=None,
             description=None,
@@ -21,7 +21,7 @@ class Variant():
             token=None,
             serialnumber=None,
             productid=None,
-            state=1):
+            state=None):
         # limit, limita la cantidad de items de una respuesta JSON, si no se envía el limit es 25.
         # offset, permite paginar los items de una respuesta JSON, si no se envía el offset es 0.
         # fields, solo devolver atributos específicos de un recurso
@@ -32,6 +32,12 @@ class Variant():
         # serialnumber, filtra por numero de serie de la variante.
         # productid, filtra variantes por el id del producto.
         # state, boolean (0 o 1) indica si las variantes están activas(0) o inactivas (1).
+
+        # GET /v1/variants.json?limit=10&offset=0
+        # GET /v1/variants.json?fields=[description,barCode,code]
+        # GET /v1/variants.json?state=0
+        # GET /v1/variants.json?productid=26
+        # GET /v1/variants.json?expand=[product]
 
         # get all parameters
         frame = inspect.currentframe()
@@ -63,12 +69,56 @@ class Variant():
 
         # {
         #   "productId": 595,
-        #   "description": "Nintendo Wii U Pro Controller"
+        #   "description": "Nintendo Wii U Pro Controller",
+        #   "code": "xxx-xxx-xxx",      //code es sku
+        #   "attribute_values": [
+        #    {
+        #      "description": "Nintendo",
+        #      "attributeId": 46
+        #    },
+        #    {
+        #      "description": "Wii U",
+        #      "attributeId": 47
+        #    }
+        #  ]
         # }
 
         # print "dataaaaa   -----  {}".format(params) 
 
         url = Environment.URL+'variants.json'
+        access_token=Environment.AccessToken
+
+        headers= {'Content-type': 'application/json',
+                  'Accept': 'application/json',
+                  'access_token':access_token}
+
+        r = requests.post(url, data=json.dumps(params), headers=headers)
+
+        return r.json()
+
+    def Update(seff, params, variantId):
+        # Ejemplo de estructura JSON que recibe 
+
+        # {
+        #   "id": 2110,
+        #   "productId": 595,
+        #   "description": "Nintendo Wii U Pro Controller",
+        #   "code": "xxx-xxx-xxx",      //code es sku
+        #   "attribute_values": [
+        #    {
+        #      "description": "Nintendo",
+        #      "attributeId": 46
+        #    },
+        #    {
+        #      "description": "Wii U",
+        #      "attributeId": 47
+        #    }
+        #  ]
+        # }
+
+        # print "dataaaaa   -----  {}".format(params) 
+
+        url = Environment.URL+'variants/'+variantId+'.json'
         access_token=Environment.AccessToken
 
         headers= {'Content-type': 'application/json',

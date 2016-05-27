@@ -2,6 +2,8 @@
 # -*- coding: UTF-8 -*-
 import requests
 import json
+import urllib
+import inspect
 from constants import Environment
 
 class Product():
@@ -11,7 +13,16 @@ class Product():
         print "llega"
 
     @classmethod
-    def Get(cls):
+    def Get(self,
+            limit=None,
+            offset=None,
+            fields=None,
+            expand=None,
+            name=None,
+            ledgeraccount=None,
+            costcenter=None,
+            producttypeid=None,
+            state=None):
         #lista de productos
 
         # Parametros
@@ -33,7 +44,20 @@ class Product():
         # GET /v1/products.json?producttypeid=1
         # GET /v1/products.json?expand=[product_type]
 
-        url = Environment.URL+'products.json'
+        # get all parameters
+        frame = inspect.currentframe()
+        args, _, _, values = inspect.getargvalues(frame)
+        arguments = dict()
+
+        for x in args:
+            if x != 'self':
+                if values[x] != None:
+                    arguments[x] = values[x]
+
+        #concatena dic en limit=10&offset=0 por ejemplo
+        params=urllib.urlencode(sorted(arguments.items()))
+
+        url = Environment.URL+'products.json?'+params
         access_token=Environment.AccessToken
 
         headers= {'Content-type': 'application/json',
