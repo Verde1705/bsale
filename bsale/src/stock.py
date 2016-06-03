@@ -58,3 +58,69 @@ class Stock():
         r = requests.get(url, headers=headers)
 
         return r.json()
+
+    @classmethod
+    def AddStock(self,params):
+        # POST /v1/stocks/receptions.json
+        # Se debe enviar un Json con la siguiente estructura.
+
+        # {
+        #   "document": "Guía",
+        #   "officeId": 1,
+        #   "documentNumber": "123",
+        #   "note": "prueba api",
+        #   "details": [
+        #     {
+        #       "quantity": 32.22,
+        #       "variantId": 629,
+        #       "cost": 3200
+        #     }
+        #   ],
+        # }
+        url = Environment.URL+'stocks/receptions.json'
+        access_token=Environment.AccessToken
+
+        headers= {'Content-type': 'application/json',
+                  'Accept': 'application/json',
+                  'access_token':access_token}
+
+        r = requests.post(url, data=json.dumps(params), headers=headers)
+
+        return r.json()
+
+        r = requests.post(url, data=json.dumps(data), headers=headers)
+
+        return r.json()
+
+    @classmethod
+    def RemoveStock(self,params):
+        # POST /v1/stocks/consumptions.json
+        # Se debe enviar un Json con la siguiente estructura.
+        # officeId es el id de la "sucursal" en bsale
+
+        # {
+        #   "note": "prueba api",
+        #   "officeId": 1, 
+        #   "details": [
+        #     {
+        #       "quantity": 13,
+        #       "variantId": 629
+        #     }
+        #   ]
+        # }
+
+        url = Environment.URL+'stocks/consumptions.json'
+        access_token=Environment.AccessToken
+
+        headers= {'Content-type': 'application/json',
+                  'Accept': 'application/json',
+                  'access_token':access_token}
+
+        r = requests.post(url, data=json.dumps(params), headers=headers)
+
+        return r.json()
+
+        r = requests.post(url, data=json.dumps(data), headers=headers)
+
+        return r.json()
+
