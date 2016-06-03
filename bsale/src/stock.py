@@ -2,6 +2,9 @@
 # -*- coding: UTF-8 -*-
 import requests
 import json
+import urllib
+import inspect
+
 from constants import Environment
 
 class Stock():
