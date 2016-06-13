@@ -7,6 +7,7 @@ import inspect
 
 from constants import Environment
 
+
 class Document():
 
     @classmethod

@@ -91,13 +91,15 @@ class Product():
         return r.json()
 
     @classmethod
-    def Create(self,
-                   name="",
-                   description="",
-                   allowDecimal=0,
-                   ledgerAccount="",
-                   costCenter="",
-                   stockControl=1):
+    def Create(
+        self,
+        name="",
+        description="",
+        allowDecimal=0,
+        ledgerAccount="",
+        costCenter="",
+        stockControl=1
+    ):
         # POST /v1/products.json
         # Se debe enviar un Json con la siguiente estructura.
 
@@ -111,34 +113,38 @@ class Product():
         # }
 
         data = {
-          "name": name,
-          "description": description,
-          "allowDecimal": allowDecimal,
-          "ledgerAccount": ledgerAccount,
-          "costCenter": costCenter,
-          "stockControl": costCenter  
+            "name": name,
+            "description": description,
+            "allowDecimal": allowDecimal,
+            "ledgerAccount": ledgerAccount,
+            "costCenter": costCenter,
+            "stockControl": costCenter  
         }
 
         url = Environment.URL+'products.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.post(url, data=json.dumps(data), headers=headers)
 
         return r.json()
 
     @classmethod
-    def Update(self,
-            idProduct,
-            name="",
-            description="",
-            allowDecimal=0,
-            ledgerAccount="",
-            costCenter="",
-            stockControl=1):
+    def Update(
+        self,
+        idProduct,
+        name="",
+        description="",
+        allowDecimal=0,
+        ledgerAccount="",
+        costCenter="",
+        stockControl=1
+    ):
         # PUT /v1/products/67.json
         # Se debe enviar un Json con la siguiente esctructura.
 
@@ -148,21 +154,23 @@ class Product():
         # }
 
         data = {
-          "id":idProduct, 
-          "name": name,
-          "description": description,
-          "allowDecimal": allowDecimal,
-          "ledgerAccount": ledgerAccount,
-          "costCenter": costCenter,
-          "stockControl": stockControl  
+            "id":idProduct, 
+            "name": name,
+            "description": description,
+            "allowDecimal": allowDecimal,
+            "ledgerAccount": ledgerAccount,
+            "costCenter": costCenter,
+            "stockControl": stockControl  
         }
 
         url = Environment.URL+'products/'+str(idProduct)+'.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type' : 'application/json',
+            'Accept' : 'application/json',
+            'access_token' : access_token
+        }
 
         r = requests.put(url, data=json.dumps(data), headers=headers)
 
@@ -173,16 +181,18 @@ class Product():
         # DELETE /v1/products/97.json cambia el estado del producto.
 
         data = {
-          "id":idProduct, 
-          "state":1
+            "id":idProduct, 
+            "state":1
         }
 
         url = Environment.URL+'products/'+str(idProduct)+'.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.put(url, data=json.dumps(data), headers=headers)
 
