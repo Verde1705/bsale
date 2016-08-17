@@ -93,7 +93,22 @@ class Document():
         r = requests.get(url, headers=headers)
 
         return r.json()
-        
+
+    @classmethod
+    def GetDetailDocument(self, idDocument):
+        # GET /v1/documents/12644/details.json
+
+        url = Environment.URL+'documents/'+str(idDocument)+'/details.json'
+        access_token=Environment.AccessToken
+
+        headers= {'Content-type': 'application/json',
+                  'Accept': 'application/json',
+                  'access_token':access_token}
+
+        r = requests.get(url, headers=headers)
+
+        return r.json()
+
     @classmethod
     def Create(self, params):
         # Ejemplo de estructura JSON

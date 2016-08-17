@@ -60,7 +60,7 @@ class Shipping():
         return r.json()
 
     @classmethod
-    def GetOneDocument(self, idDocument):
+    def GetOneShipping(self, idDocument):
         # GET /v1/documents/421.json retorna un documento específico.
         # Parametros
 

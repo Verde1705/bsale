@@ -8,6 +8,7 @@ from .src.document import Document
 from .src.stock import Stock
 from .src.variant import Variant
 from .src.shipping import Shipping
+from .src.clients import Clients
 
 
 __all__ = [
@@ -16,5 +17,6 @@ __all__ = [
     "Document",
     "Stock",
     "Variant",
-    "Shipping"
+    "Shipping",
+    "Clients"
 ]
