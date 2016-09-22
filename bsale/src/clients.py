@@ -7,6 +7,7 @@ import inspect
 
 from constants import Environment
 
+
 class Clients():
 
     @classmethod
@@ -50,18 +51,20 @@ class Clients():
 
         for x in args:
             if x != 'self':
-                if values[x] != None:
+                if values[x] is not None:
                     arguments[x] = values[x]
 
-        #concatena dic en limit=10&offset=0 por ejemplo
-        params=urllib.urlencode(sorted(arguments.items()))
+        # concatena dic en limit=10&offset=0 por ejemplo
+        params = urllib.urlencode(sorted(arguments.items()))
 
         url = Environment.URL+'clients.json?'+params
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.get(url, headers=headers)
 
@@ -90,11 +93,13 @@ class Clients():
         # }
 
         url = Environment.URL+'clients.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 
@@ -123,11 +128,13 @@ class Clients():
         # print "dataaaaa   -----  {}".format(params) 
 
         url = Environment.URL+'clients/'+clientId+'.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 

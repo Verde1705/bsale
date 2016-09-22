@@ -26,8 +26,8 @@ class ProductTestCase(unittest.TestCase):
 
     def test_get_one_product(self):
         self.product = bsale.Product()
-        id_product=2334
-        product = self.product.GetOneProduct(id_product)
+        id_product = 2334
+        self.product.GetOneProduct(id_product)
 
         # print product
 
@@ -45,20 +45,16 @@ class ProductTestCase(unittest.TestCase):
 
     def test_update_product(self):
         self.product = bsale.Product()
-        id_product=2334
-        name="Calcetines de Mujer"
+        id_product = 2334
+        name = "Calcetines de Mujer"
         # description="Multiples colores de calcetines"
         # allowDecimal=0
         # ledgerAccount="Calcetas"
         # costCenter="23"
         # stockControl=1  
-        product = self.product.Update(id_product, name)
-
-        # print product
+        self.product.Update(id_product, name)
 
     def test_remove_product(self):
         self.product = bsale.Product()
-        id_product=2334
-        product = self.product.Remove(id_product)
-
-        # print product
+        id_product = 2334
+        self.product.Remove(id_product)

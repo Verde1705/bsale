@@ -4,19 +4,20 @@ import bsale
 
 from bsale import *
 
+
 class DocumentTestCase(unittest.TestCase):
 
     def test_get_documents(self):
         self.document = bsale.Document()
-        document = self.document.Get(limit=4, offset=0)
+        self.document.Get(limit=4, offset=0)
 
         # print document
 
     def test_get_one_document(self):
-        self.document=bsale.Document()
+        self.document = bsale.Document()
 
-        id_document=10829
-        document=self.document.GetOneDocument(id_document)
+        id_document = 10829
+        self.document.GetOneDocument(id_document)
 
         # print document
 
@@ -39,7 +40,7 @@ class DocumentTestCase(unittest.TestCase):
     #       },
     #       "details": [
     #         {
-            
+
     #           "netUnitValue": 53975,
     #           "quantity": 1,
     #           "taxId":  "[1]",
@@ -61,8 +62,79 @@ class DocumentTestCase(unittest.TestCase):
 
     def test_update_state_sii(self):
         self.document = bsale.Document()
-        id_document=10829
-        state=1
+        id_document = 10829
+        state = 1
         document = self.document.UpdateStateSII(id_document, state)
 
         print document
+
+    def test_add_nota_credito(self):
+        """
+        """
+        self.document = bsale.Document()
+        self.document.Create({
+              "href": "https://api.bsale.cl/v1/documents/382.json",
+              "id": 382,
+              "emissionDate": 1463540400,
+              "expirationDate": 1464663600,
+              "generationDate": 1463593575,  
+              "number": 1,
+              "totalAmount": 14280.0,
+              "netAmount": 12000.0,
+              "taxAmount": 2280.0,
+              "exemptAmount": 0,
+              "exportTotalAmount": 0,
+              "exportNetAmount": 0,
+              "exportTaxAmount": 0,
+              "exportExemptAmount": 0,
+              "commissionRate": 0,
+              "commissionNetAmount": 0,
+              "commissionTaxAmount": 0,
+              "commissionTotalAmount": 0,
+              "percentageTaxWithheld": 0,
+              "purchaseTaxAmount": 0,
+              "purchaseTotalAmount": 0,
+              "urlTimbre": null,
+              "ted": null,
+              "urlPublicView": "http://app2.bsale.cl/view/2/a2d9b4da5128?sfd=99",
+              "urlPdf": "http://app2.bsale.cl/view/2/a2d9b4da5128.pdf?sfd=99",
+              "urlPublicViewOriginal": "http://app2.bsale.cl/view/2/a2d9b4da5128",
+              "urlPdfOriginal": "http://app2.bsale.cl/view/2/a2d9b4da5128.pdf",
+              "token": "a2d9b4da5128",
+              "state": 0,
+              "userId": 2,
+              "urlXml": null,
+              "address": null,
+              "municipality": null,
+              "city": null,
+              "informedSii": 1,
+              "responseMsgSii": null,
+              "document_type": {
+                "href": "https://api.bsale.cl/v1/document_types/1.json",
+                "id": "1"
+              },
+              "client": {
+                "href": "https://api.bsale.cl/v1/clients/7.json",
+                "id": "7"
+              },
+              "office": {
+                "href": "https://api.bsale.cl/v1/offices/2.json",
+                "id": "2"
+              },
+              "user": {
+                "href": "https://api.bsale.cl/v1/users/2.json",
+                "id": "2"
+              },
+              "references": {
+                "href": "https://api.bsale.cl/v1/documents/382/references.json"
+              },
+              "document_taxes": {
+                "href": "https://api.bsale.cl/v1/documents/382/document_taxes.json"
+              },
+              "details": {
+                "href": "https://api.bsale.cl/v1/documents/382/details.json"
+              },
+             "sellers": {
+                "href": "https://api.bsale.cl/v1/documents/382/sellers.json"
+             }
+            })

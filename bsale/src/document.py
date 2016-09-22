@@ -49,7 +49,7 @@ class Document():
         # saleconditionid, filtra documentos por la condición de venta.
         # informedsii, filtra documentos si fue declarado en el SII, 0 es correcto, 1 es enviado, 2 es rechazado (Integer).
         # state, boolean (0 o 1) indica si los documentos están activos(0) inactivos (1).
-        
+
         # get all parameters
         frame = inspect.currentframe()
         args, _, _, values = inspect.getargvalues(frame)
@@ -57,18 +57,20 @@ class Document():
 
         for x in args:
             if x != 'self':
-                if values[x] != None:
+                if values[x] is not None:
                     arguments[x] = values[x]
 
-        #concatena dic en limit=10&offset=0 por ejemplo
-        params=urllib.urlencode(sorted(arguments.items()))
+        # concatena dic en limit=10&offset=0 por ejemplo
+        params = urllib.urlencode(sorted(arguments.items()))
 
         url = Environment.URL+'documents.json?'+params
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.get(url, headers=headers)
 
@@ -85,11 +87,13 @@ class Document():
         # GET /v1/documents/421.json?expand=[document_type,office]
 
         url = Environment.URL+'documents/'+str(idDocument)+'.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.get(url, headers=headers)
 
@@ -100,11 +104,13 @@ class Document():
         # GET /v1/documents/12644/details.json
 
         url = Environment.URL+'documents/'+str(idDocument)+'/details.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.get(url, headers=headers)
 
@@ -178,11 +184,13 @@ class Document():
         # print "dataaaaa   -----  {}".format(params) 
 
         url = Environment.URL+'documents.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 
@@ -204,17 +212,14 @@ class Document():
         }
 
         url = Environment.URL+'documents/set_sii_state.json'
-        access_token=Environment.AccessToken
+        access_token = Environment.AccessToken
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
 
         r = requests.put(url, data=json.dumps(data), headers=headers)
 
         return r.json()
-
-
-
-
-
