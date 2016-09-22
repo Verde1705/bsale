@@ -18,6 +18,7 @@ class Document():
             expand=None,
             emissiondate=None,
             expirationdate=None,
+            emissiondaterange=None,
             number=None,
             token=None,
             documenttypeid=None,
@@ -212,5 +213,8 @@ class Document():
         r = requests.put(url, data=json.dumps(data), headers=headers)
 
         return r.json()
+
+
+
 
 
