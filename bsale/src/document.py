@@ -27,7 +27,7 @@ class Document():
             officeid=None,
             saleconditionid=None,
             informedsii=None,
-            state=1):
+            state=0):
 
         # GET /v1/documents.json retorna todos los documentos.
 

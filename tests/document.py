@@ -10,7 +10,7 @@ class DocumentTestCase(unittest.TestCase):
     def test_get_documents(self):
         self.document = bsale.Document()
         self.document.Get(limit=4, offset=0)
-
+        # document = self.document.Get(emissiondaterange=[1474416000, 1474585200],  documenttypeid=1, officeid=1, limit=100000000, state=0 )
         # print document
 
     def test_get_one_document(self):
