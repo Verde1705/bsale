@@ -44,7 +44,7 @@ if __name__ == "__main__":
         params = {
           "documentTypeId": 2,
           "officeId": 1,
-          "referenceDocumentId": 14387,
+          "referenceDocumentId": item["id"],
           "expirationDate": 1474502400,
           "emissionDate": 1474502400,
           "motive": "prueba api",
