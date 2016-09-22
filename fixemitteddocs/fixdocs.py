@@ -33,13 +33,21 @@ if __name__ == "__main__":
             }
             details.append(det)
 
+        # client = {
+        #     "code": "1-9",
+        #     "city": "Puerto Varas",
+        #     "municipality": "comuna",
+        #     "activity": "giro",
+        #     "address": "direccion"
+        #   }
+
         client = {
-            "code": "1-9",
-            "city": "Puerto Varas",
-            "municipality": "comuna",
-            "activity": "giro",
-            "address": "direccion"
-          }
+            "municipality": "Las Condes",
+            "activity": "Sin dato",
+            "city": "Santiago",
+            "address": "Alonso de Cordova",
+            "code": 111111111
+        }
 
         params = {
           "documentTypeId": 2,
