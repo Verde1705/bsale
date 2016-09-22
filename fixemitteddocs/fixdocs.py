@@ -43,7 +43,7 @@ if __name__ == "__main__":
 
         params = {
           "documentTypeId": 2,
-          "officeId": 5,
+          "officeId": 1,
           "referenceDocumentId": 14387,
           "expirationDate": 1474502400,
           "emissionDate": 1474502400,
@@ -57,6 +57,3 @@ if __name__ == "__main__":
         }
 
         print document.CreateCreditNote(params)
-
-
-
