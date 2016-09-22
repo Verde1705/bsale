@@ -138,3 +138,50 @@ class DocumentTestCase(unittest.TestCase):
                 "href": "https://api.bsale.cl/v1/documents/382/sellers.json"
              }
             })
+
+    def test_delete_document(self):
+        self.document = bsale.Document()
+        # print self.document.DeleteDocument(14387, 5)
+
+    def test_credit_note(self):
+        self.document = bsale.Document()
+
+        detail = self.document.GetDetailDocument(14387)
+        details = []
+        for items in detail["items"]:
+            det = {
+                "documentDetailId": items["id"],
+                "quantity": int(items["quantity"]),
+                "unitValue": (items['netAmount']/1.19)
+            }
+            details.append(det)
+
+        client =  {
+            "code": "1-9",
+            "city": "Puerto Varas",
+            "municipality": "comuna",
+            "activity": "giro",
+            "address": "direccion"
+          }
+
+        params =  {
+          "documentTypeId": 2,
+          "officeId": 5,
+          "referenceDocumentId": 14387,
+          "expirationDate": 1474502400,
+          "emissionDate": 1474502400,
+          "motive": "prueba api",
+          "declareSii": 1,
+          "priceAdjustment": 0,
+          "editTexts": 0,
+          "type": 0,
+          "details":details,
+          "client":client
+        }
+
+        # print details
+
+        print self.document.CreateCreditNote(params)
+
+
+

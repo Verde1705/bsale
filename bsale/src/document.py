@@ -223,3 +223,49 @@ class Document():
         r = requests.put(url, data=json.dumps(data), headers=headers)
 
         return r.json()
+
+    @classmethod
+    def DeleteDocument(self, idDocument, officeid):
+        # GET /v1/documents/12644/details.json
+
+        url = Environment.URL+'documents/'+str(idDocument)+'.json?officeid='+str(officeid)
+        access_token = Environment.AccessToken
+
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
+
+        r = requests.get(url, headers=headers)
+
+        return r.json()
+
+    @classmethod
+    def CreateCreditNote(self, params):
+        # example json
+        # {
+        #   "documentTypeId": 9,
+        #   "officeId": 1,
+        #   "referenceDocumentId": 11528,
+        #   "expirationDate": 1407384000,
+        #   "emissionDate": 1407384000,
+        #   "motive": "prueba api",
+        #   "declareSii": 1,
+        #   "priceAdjustment": 0,
+        #   "editTexts": 0,
+        #   "type": 1
+        # }
+
+        url = Environment.URL+'returns.json'
+        access_token = Environment.AccessToken
+
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token':access_token
+        }
+
+        r = requests.post(url, data=json.dumps(params), headers=headers)
+
+        return r.json()
