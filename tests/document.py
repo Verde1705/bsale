@@ -146,7 +146,7 @@ class DocumentTestCase(unittest.TestCase):
     def test_credit_note(self):
         self.document = bsale.Document()
 
-        detail = self.document.GetDetailDocument(14387)
+        detail = self.document.GetDetailDocument(14390)
         details = []
         for items in detail["items"]:
             det = {
@@ -167,7 +167,7 @@ class DocumentTestCase(unittest.TestCase):
         params =  {
           "documentTypeId": 2,
           "officeId": 5,
-          "referenceDocumentId": 14387,
+          "referenceDocumentId": 14390,
           "expirationDate": 1474502400,
           "emissionDate": 1474502400,
           "motive": "prueba api",
