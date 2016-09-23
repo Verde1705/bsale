@@ -46,7 +46,7 @@ if __name__ == "__main__":
             "activity": "Sin dato",
             "city": "Santiago",
             "address": "Alonso de Cordova",
-            "code": 111111111
+            "code": "22222222-2"
         }
 
         params = {
