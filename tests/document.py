@@ -134,9 +134,9 @@ class DocumentTestCase(unittest.TestCase):
               "details": {
                 "href": "https://api.bsale.cl/v1/documents/382/details.json"
               },
-             "sellers": {
+              "sellers": {
                 "href": "https://api.bsale.cl/v1/documents/382/sellers.json"
-             }
+              }
             })
 
     def test_delete_document(self):
@@ -156,7 +156,7 @@ class DocumentTestCase(unittest.TestCase):
             }
             details.append(det)
 
-        client =  {
+        client = {
             "code": "1-9",
             "city": "Puerto Varas",
             "municipality": "comuna",
@@ -164,7 +164,7 @@ class DocumentTestCase(unittest.TestCase):
             "address": "direccion"
           }
 
-        params =  {
+        params = {
           "documentTypeId": 2,
           "officeId": 5,
           "referenceDocumentId": 14390,
@@ -182,6 +182,3 @@ class DocumentTestCase(unittest.TestCase):
         # print details
 
         print self.document.CreateCreditNote(params)
-
-
-
