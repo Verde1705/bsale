@@ -14,10 +14,17 @@ if __name__ == "__main__":
     # json_data = loads(file_content)
     json_data = { 
         "items" : [
-            {'id': 1746},
             {'id': 1747},
             {'id': 1748},
-            {'id': 1749}]}
+            {'id': 1749},
+            {'id': 1750},
+            {'id': 1751},
+            {'id': 1752},
+            {'id': 1753},
+            {'id': 1754},
+            {'id': 1755},
+            {'id': 1756},
+          ]}
 
     document = bsale.Document()
 
