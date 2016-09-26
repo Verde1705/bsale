@@ -1,0 +1,1 @@
+this is a string, it has quotes, that''s its quality ""
