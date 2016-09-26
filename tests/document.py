@@ -73,71 +73,71 @@ class DocumentTestCase(unittest.TestCase):
         """
         self.document = bsale.Document()
         self.document.Create({
-              "href": "https://api.bsale.cl/v1/documents/382.json",
-              "id": 382,
-              "emissionDate": 1463540400,
-              "expirationDate": 1464663600,
-              "generationDate": 1463593575,  
-              "number": 1,
-              "totalAmount": 14280.0,
-              "netAmount": 12000.0,
-              "taxAmount": 2280.0,
-              "exemptAmount": 0,
-              "exportTotalAmount": 0,
-              "exportNetAmount": 0,
-              "exportTaxAmount": 0,
-              "exportExemptAmount": 0,
-              "commissionRate": 0,
-              "commissionNetAmount": 0,
-              "commissionTaxAmount": 0,
-              "commissionTotalAmount": 0,
-              "percentageTaxWithheld": 0,
-              "purchaseTaxAmount": 0,
-              "purchaseTotalAmount": 0,
-              "urlTimbre": null,
-              "ted": null,
-              "urlPublicView": "http://app2.bsale.cl/view/2/a2d9b4da5128?sfd=99",
-              "urlPdf": "http://app2.bsale.cl/view/2/a2d9b4da5128.pdf?sfd=99",
-              "urlPublicViewOriginal": "http://app2.bsale.cl/view/2/a2d9b4da5128",
-              "urlPdfOriginal": "http://app2.bsale.cl/view/2/a2d9b4da5128.pdf",
-              "token": "a2d9b4da5128",
-              "state": 0,
-              "userId": 2,
-              "urlXml": null,
-              "address": null,
-              "municipality": null,
-              "city": null,
-              "informedSii": 1,
-              "responseMsgSii": null,
-              "document_type": {
+            "href": "https://api.bsale.cl/v1/documents/382.json",
+            "id": 382,
+            "emissionDate": 1463540400,
+            "expirationDate": 1464663600,
+            "generationDate": 1463593575,  
+            "number": 1,
+            "totalAmount": 14280.0,
+            "netAmount": 12000.0,
+            "taxAmount": 2280.0,
+            "exemptAmount": 0,
+            "exportTotalAmount": 0,
+            "exportNetAmount": 0,
+            "exportTaxAmount": 0,
+            "exportExemptAmount": 0,
+            "commissionRate": 0,
+            "commissionNetAmount": 0,
+            "commissionTaxAmount": 0,
+            "commissionTotalAmount": 0,
+            "percentageTaxWithheld": 0,
+            "purchaseTaxAmount": 0,
+            "purchaseTotalAmount": 0,
+            "urlTimbre": null,
+            "ted": null,
+            "urlPublicView": "http://app2.bsale.cl/view/2/a2d9b4da5128?sfd=99",
+            "urlPdf": "http://app2.bsale.cl/view/2/a2d9b4da5128.pdf?sfd=99",
+            "urlPublicViewOriginal": "http://app2.bsale.cl/view/2/a2d9b4da5128",
+            "urlPdfOriginal": "http://app2.bsale.cl/view/2/a2d9b4da5128.pdf",
+            "token": "a2d9b4da5128",
+            "state": 0,
+            "userId": 2,
+            "urlXml": null,
+            "address": null,
+            "municipality": null,
+            "city": null,
+            "informedSii": 1,
+            "responseMsgSii": null,
+            "document_type": {
                 "href": "https://api.bsale.cl/v1/document_types/1.json",
                 "id": "1"
-              },
-              "client": {
+            },
+            "client": {
                 "href": "https://api.bsale.cl/v1/clients/7.json",
                 "id": "7"
-              },
-              "office": {
+            },
+            "office": {
                 "href": "https://api.bsale.cl/v1/offices/2.json",
                 "id": "2"
-              },
-              "user": {
+            },
+            "user": {
                 "href": "https://api.bsale.cl/v1/users/2.json",
                 "id": "2"
-              },
-              "references": {
+            },
+            "references": {
                 "href": "https://api.bsale.cl/v1/documents/382/references.json"
-              },
-              "document_taxes": {
+            },
+            "document_taxes": {
                 "href": "https://api.bsale.cl/v1/documents/382/document_taxes.json"
-              },
-              "details": {
+            },
+            "details": {
                 "href": "https://api.bsale.cl/v1/documents/382/details.json"
-              },
-             "sellers": {
+            },
+            "sellers": {
                 "href": "https://api.bsale.cl/v1/documents/382/sellers.json"
-             }
-            })
+            }
+        })
 
     def test_delete_document(self):
         self.document = bsale.Document()
@@ -156,7 +156,7 @@ class DocumentTestCase(unittest.TestCase):
             }
             details.append(det)
 
-        client =  {
+        client = {
             "code": "1-9",
             "city": "Puerto Varas",
             "municipality": "comuna",
@@ -164,7 +164,7 @@ class DocumentTestCase(unittest.TestCase):
             "address": "direccion"
           }
 
-        params =  {
+        params = {
           "documentTypeId": 2,
           "officeId": 5,
           "referenceDocumentId": 14390,
@@ -182,6 +182,3 @@ class DocumentTestCase(unittest.TestCase):
         # print details
 
         print self.document.CreateCreditNote(params)
-
-
-
