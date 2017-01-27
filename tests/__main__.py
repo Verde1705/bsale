@@ -7,10 +7,12 @@ import unittest
 
 from product import ProductTestCase
 from document import DocumentTestCase
+from stock import StockTestCase
 
 __all__ = [
     "ProductTestCase",
-    "DocumentTestCase"
+    "DocumentTestCase",
+    "StockTestCase"
 ]
 
 
