@@ -10,7 +10,8 @@ from .shipping import Shipping
 from .stock import Stock
 from .variant import Variant
 
-def BsaleApiCLient(object):
+
+class BsaleApiCLient(object):
     # return "hola"
     @property
     def token(self):
@@ -29,10 +30,10 @@ def BsaleApiCLient(object):
         return self._shipping_id
 
     def __init__(self):
-        self._token=''
-        self._office_id=''
-        self._document_id=''
-        self._shipping_id=''
+        self._token = ''
+        self._office_id = ''
+        self._document_id = ''
+        self._shipping_id = ''
 
 
 def API(token, office_id, document_id, shipping_id):
