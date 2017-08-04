@@ -32,10 +32,12 @@ if __name__ == "__main__":
     document = bsale.Document()
 
     counter = 0
+    last_id = 1757
+    q = 50
 
     for item in json_data["items"]:
 
-        if counter < 50 and item["id"] > 1757:
+        if counter < q and item["id"] > last_id:
 
             detail = document.GetDetailDocument(item["id"])
             details = []
@@ -80,7 +82,7 @@ if __name__ == "__main__":
 
             print document.CreateCreditNote(params)
 
-        if counter >= 50:
+        if counter >= q:
             break
 
         counter += 1
