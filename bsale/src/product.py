@@ -4,13 +4,20 @@ import requests
 import json
 import urllib
 import inspect
+from .itoken import iToken
 from constants import Environment
+
 
 class Product():
     """docstring for Product"""
 
-    def test(self):
-        print "llega"
+    itoken = ""
+
+    def __init__(self, itoken=iToken()):
+        if not isinstance(itoken, iToken):
+            raise Exception("itoken, must be an iTokenInstance")
+
+        Product.itoken = itoken
 
     @classmethod
     def Get(self,
@@ -55,7 +62,7 @@ class Product():
                     arguments[x] = values[x]
 
         #concatena dic en limit=10&offset=0 por ejemplo
-        params=urllib.urlencode(sorted(arguments.items()))
+        params = urllib.urlencode(sorted(arguments.items()))
 
         url = Environment.URL+'products.json?'+params
         access_token=Environment.AccessToken

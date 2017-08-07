@@ -5,9 +5,19 @@ import json
 import urllib
 import inspect
 
+from .itoken import iToken
 from constants import Environment
 
+
 class Variant():
+
+    itoken = ""
+
+    def __init__(self, itoken):
+        if not isinstance(itoken, iToken):
+            raise Exception("itoken, must be an iTokenInstance")
+
+        Variant.itoken = itoken
 
     @classmethod
     def Get(self,

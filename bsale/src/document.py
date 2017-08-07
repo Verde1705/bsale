@@ -5,10 +5,20 @@ import json
 import urllib
 import inspect
 
+
+from .itoken import iToken
 from constants import Environment
 
 
-class Document():
+class Document(object):
+
+    itoken = ""
+
+    def __init__(self, itoken=iToken()):
+        if not isinstance(itoken, iToken):
+            raise Exception("itoken, must be an iTokenInstance")
+
+        Document.itoken = itoken
 
     @classmethod
     def Get(self,
@@ -64,7 +74,7 @@ class Document():
         params = urllib.urlencode(sorted(arguments.items()))
 
         url = Environment.URL+'documents.json?'+params
-        access_token = Environment.AccessToken
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
@@ -87,7 +97,7 @@ class Document():
         # GET /v1/documents/421.json?expand=[document_type,office]
 
         url = Environment.URL+'documents/'+str(idDocument)+'.json'
-        access_token = Environment.AccessToken
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
@@ -104,7 +114,7 @@ class Document():
         # GET /v1/documents/12644/details.json
 
         url = Environment.URL+'documents/'+str(idDocument)+'/details.json'
-        access_token = Environment.AccessToken
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
@@ -184,7 +194,7 @@ class Document():
         # print "dataaaaa   -----  {}".format(params) 
 
         url = Environment.URL+'documents.json'
-        access_token = Environment.AccessToken
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
@@ -212,7 +222,7 @@ class Document():
         }
 
         url = Environment.URL+'documents/set_sii_state.json'
-        access_token = Environment.AccessToken
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
@@ -229,7 +239,7 @@ class Document():
         # GET /v1/documents/12644/details.json
 
         url = Environment.URL+'documents/'+str(idDocument)+'.json?officeid='+str(officeid)
-        access_token = Environment.AccessToken
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
@@ -258,7 +268,7 @@ class Document():
         # }
 
         url = Environment.URL+'returns.json'
-        access_token = Environment.AccessToken
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',

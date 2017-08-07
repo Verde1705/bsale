@@ -5,10 +5,19 @@ import json
 import urllib
 import inspect
 
+from .itoken import iToken
 from constants import Environment
 
 
 class Shipping():
+
+    itoken = ""
+
+    def __init__(self, itoken):
+        if not isinstance(itoken, iToken):
+            raise Exception("itoken, must be an iTokenInstance")
+
+        Shipping.itoken = itoken
 
     @classmethod
     def Get(self,

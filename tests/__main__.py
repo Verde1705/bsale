@@ -8,13 +8,15 @@ import unittest
 from product import ProductTestCase
 from document import DocumentTestCase
 from stock import StockTestCase
+from api import APITestCase
 
 __all__ = [
     "ProductTestCase",
     "DocumentTestCase",
-    "StockTestCase"
+    "StockTestCase",
+    "ClientTestCase"
 ]
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)

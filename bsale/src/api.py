@@ -2,16 +2,15 @@
 # -*- coding: UTF-8 -*-
 
 import datetime
-from .constants import Environment
 from .clients import Clients
 from .document import Document
 from .product import Product
 from .shipping import Shipping
 from .stock import Stock
 from .variant import Variant
+from .itoken import iToken
 
-
-class BsaleApiCLient(object):
+class BsaleApiCLient(iToken):
     # return "hola"
     @property
     def token(self):
@@ -35,23 +34,27 @@ class BsaleApiCLient(object):
         self._document_id = ''
         self._shipping_id = ''
 
+        self.Document = Document(self)
+        self.Clients = Clients(self)
+        self.Product = Product(self)
+        self.Shipping = Shipping(self)
+        self.Stock = Stock(self)
+        self.Variant = Variant(self)
 
-def API(token, office_id, document_id, shipping_id):
+    # itoken implementation
+    def getToken(self):
+        return self.token
+
+
+def API(token):
     """
     inicializa el singleton BsaleApiCLient() 
 
-    @param toke <str> indica el token entregado a la tienda
-    @param office_id <str> indica el id de la sucursal a la cual se realizan los cambios 
-    @param document_id <str> id del documento boleta 
-    @param shipping_id <str> id del documento guia de despacho
+    @param token <str> indica el token entregado a la tienda
 
     @return : nueva instancia de BsaleApiCLient
     """
     singleton = BsaleApiCLient()
-
     singleton._token = token
-    singleton._office_id = office_id
-    singleton._document_id = document_id
-    singleton._shipping_id = shipping_id
 
     return singleton
