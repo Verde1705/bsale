@@ -73,13 +73,13 @@ class Document(object):
         # concatena dic en limit=10&offset=0 por ejemplo
         params = urllib.urlencode(sorted(arguments.items()))
 
-        url = Environment.URL+'documents.json?'+params
+        url = Environment.URL + 'documents.json?' + params
         access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.get(url, headers=headers)
@@ -96,13 +96,13 @@ class Document(object):
 
         # GET /v1/documents/421.json?expand=[document_type,office]
 
-        url = Environment.URL+'documents/'+str(idDocument)+'.json'
+        url = Environment.URL + 'documents/' + str(idDocument) + '.json'
         access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.get(url, headers=headers)
@@ -113,13 +113,13 @@ class Document(object):
     def GetDetailDocument(self, idDocument):
         # GET /v1/documents/12644/details.json
 
-        url = Environment.URL+'documents/'+str(idDocument)+'/details.json'
+        url = Environment.URL + 'documents/' + str(idDocument) + '/details.json'
         access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.get(url, headers=headers)
@@ -188,18 +188,16 @@ class Document(object):
         #   "allowDecimal": allowDecimal,
         #   "ledgerAccount": ledgerAccount,
         #   "costCenter": costCenter,
-        #   "stockControl": costCenter  
+        #   "stockControl": costCenter
         # }
 
-        # print "dataaaaa   -----  {}".format(params) 
-
-        url = Environment.URL+'documents.json'
+        url = Environment.URL + 'documents.json'
         access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
@@ -207,7 +205,7 @@ class Document(object):
         return r.json()
 
     @classmethod
-    def UpdateStateSII(self,idDocument, state):
+    def UpdateStateSII(self, idDocument, state):
         # PUT /v1/documents/set_sii_state.json
         # En caso de necesitar el cambio de estado que indica si el documento fue declarado en el SII, se debe enviar un json con la siguiente estructura:
         # informedSii, indica si el documento fue informado al SII, 0 es correcto, 1 es enviado, 2 es rechazado (Integer).
@@ -217,17 +215,17 @@ class Document(object):
         # }
 
         data = {
-          "id":idDocument, 
-          "informedSii":state
+            "id": idDocument,
+            "informedSii": state
         }
 
-        url = Environment.URL+'documents/set_sii_state.json'
+        url = Environment.URL + 'documents/set_sii_state.json'
         access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.put(url, data=json.dumps(data), headers=headers)
@@ -238,13 +236,13 @@ class Document(object):
     def DeleteDocument(self, idDocument, officeid):
         # GET /v1/documents/12644/details.json
 
-        url = Environment.URL+'documents/'+str(idDocument)+'.json?officeid='+str(officeid)
+        url = Environment.URL + 'documents/' + str(idDocument) + '.json?officeid=' + str(officeid)
         access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.get(url, headers=headers)
@@ -267,13 +265,13 @@ class Document(object):
         #   "type": 1
         # }
 
-        url = Environment.URL+'returns.json'
+        url = Environment.URL + 'returns.json'
         access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)

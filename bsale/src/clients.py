@@ -19,7 +19,6 @@ class Clients():
 
         Clients.itoken = itoken
 
-
     @classmethod
     def Get(self,
             limit=None,
