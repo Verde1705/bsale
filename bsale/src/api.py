@@ -10,6 +10,7 @@ from .stock import Stock
 from .variant import Variant
 from .itoken import iToken
 
+
 class BsaleApiCLient(iToken):
     # return "hola"
     @property
@@ -48,7 +49,7 @@ class BsaleApiCLient(iToken):
 
 def API(token):
     """
-    inicializa el singleton BsaleApiCLient() 
+    inicializa el singleton BsaleApiCLient()
 
     @param token <str> indica el token entregado a la tienda
 
