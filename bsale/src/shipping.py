@@ -43,7 +43,7 @@ class Shipping():
         # officeid, Permite filtrar por sucursal.
         # shippingtypeid, filtra por documento de referencia.
         # state, boolean (0 o 1) indica si los documentos están activos(0) inactivos (1).
-        
+
         # get all parameters
         frame = inspect.currentframe()
         args, _, _, values = inspect.getargvalues(frame)
@@ -54,15 +54,15 @@ class Shipping():
                 if values[x] != None:
                     arguments[x] = values[x]
 
-        #concatena dic en limit=10&offset=0 por ejemplo
-        params=urllib.urlencode(sorted(arguments.items()))
+        # concatena dic en limit=10&offset=0 por ejemplo
+        params = urllib.urlencode(sorted(arguments.items()))
 
-        url = Environment.URL+'shippings.json?'+params
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'shippings.json?' + params
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {'Content-type': 'application/json',
+                   'Accept': 'application/json',
+                   'access_token': access_token}
 
         r = requests.get(url, headers=headers)
 
@@ -78,17 +78,17 @@ class Shipping():
 
         # GET /v1/documents/421.json?expand=[document_type,office]
 
-        url = Environment.URL+'shippings/'+str(idDocument)+'.json'
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'shippings/' + str(idDocument) + '.json'
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {'Content-type': 'application/json',
+                   'Accept': 'application/json',
+                   'access_token': access_token}
 
         r = requests.get(url, headers=headers)
 
         return r.json()
-        
+
     @classmethod
     def Create(self, params):
         # Ejemplo de estructura JSON
@@ -122,15 +122,13 @@ class Shipping():
         #   }
         # }
 
+        url = Environment.URL + 'shippings.json'
+        access_token = self.itoken.getToken()
 
-        url = Environment.URL+'shippings.json'
-        access_token=Environment.AccessToken
-
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {'Content-type': 'application/json',
+                   'Accept': 'application/json',
+                   'access_token': access_token}
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 
         return r.json()
-

@@ -30,7 +30,7 @@ class Product():
             costcenter=None,
             producttypeid=None,
             state=None):
-        #lista de productos
+        # lista de productos
 
         # Parametros
 
@@ -58,18 +58,20 @@ class Product():
 
         for x in args:
             if x != 'self':
-                if values[x] != None:
+                if values[x] is not None:
                     arguments[x] = values[x]
 
-        #concatena dic en limit=10&offset=0 por ejemplo
+        # concatena dic en limit=10&offset=0 por ejemplo
         params = urllib.urlencode(sorted(arguments.items()))
 
-        url = Environment.URL+'products.json?'+params
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'products.json?' + params
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
 
         r = requests.get(url, headers=headers)
 
@@ -86,12 +88,14 @@ class Product():
 
         # GET /v1/products/150.json?expand=[product_type]
 
-        url = Environment.URL+'products/'+str(idProduct)+'.json'
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'products/' + str(idProduct) + '.json'
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
 
         r = requests.get(url, headers=headers)
 
@@ -116,7 +120,7 @@ class Product():
         #   "allowDecimal": 0,
         #   "ledgerAccount": "Calcetas",
         #   "costCenter": "23",
-        #   "stockControl": 1  
+        #   "stockControl": 1
         # }
 
         data = {
@@ -125,16 +129,16 @@ class Product():
             "allowDecimal": allowDecimal,
             "ledgerAccount": ledgerAccount,
             "costCenter": costCenter,
-            "stockControl": costCenter  
+            "stockControl": costCenter
         }
 
-        url = Environment.URL+'products.json'
-        access_token = Environment.AccessToken
+        url = Environment.URL + 'products.json'
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.post(url, data=json.dumps(data), headers=headers)
@@ -157,26 +161,26 @@ class Product():
 
         # {
         #   "id":"97",
-        #   "name": "Calcetines de Mujer", 
+        #   "name": "Calcetines de Mujer",
         # }
 
         data = {
-            "id":idProduct, 
+            "id": idProduct,
             "name": name,
             "description": description,
             "allowDecimal": allowDecimal,
             "ledgerAccount": ledgerAccount,
             "costCenter": costCenter,
-            "stockControl": stockControl  
+            "stockControl": stockControl
         }
 
-        url = Environment.URL+'products/'+str(idProduct)+'.json'
-        access_token = Environment.AccessToken
+        url = Environment.URL + 'products/' + str(idProduct) + '.json'
+        access_token = self.itoken.getToken()
 
         headers = {
-            'Content-type' : 'application/json',
-            'Accept' : 'application/json',
-            'access_token' : access_token
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
         }
 
         r = requests.put(url, data=json.dumps(data), headers=headers)
@@ -184,21 +188,21 @@ class Product():
         return r.json()
 
     @classmethod
-    def Remove(self,idProduct):
+    def Remove(self, idProduct):
         # DELETE /v1/products/97.json cambia el estado del producto.
 
         data = {
-            "id":idProduct, 
-            "state":1
+            "id": idProduct,
+            "state": 1
         }
 
-        url = Environment.URL+'products/'+str(idProduct)+'.json'
-        access_token = Environment.AccessToken
+        url = Environment.URL + 'products/' + str(idProduct) + '.json'
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.put(url, data=json.dumps(data), headers=headers)

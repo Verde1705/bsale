@@ -56,18 +56,20 @@ class Variant():
 
         for x in args:
             if x != 'self':
-                if values[x] != None:
+                if values[x] is not None:
                     arguments[x] = values[x]
 
-        #concatena dic en limit=10&offset=0 por ejemplo
-        params=urllib.urlencode(sorted(arguments.items()))
+        # concatena dic en limit=10&offset=0 por ejemplo
+        params = urllib.urlencode(sorted(arguments.items()))
 
-        url = Environment.URL+'variants.json?'+params
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'variants.json?' + params
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
 
         r = requests.get(url, headers=headers)
 
@@ -93,21 +95,23 @@ class Variant():
         #  ]
         # }
 
-        # print "dataaaaa   -----  {}".format(params) 
+        # print "dataaaaa   -----  {}".format(params)
 
-        url = Environment.URL+'variants.json'
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'variants.json'
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 
         return r.json()
 
-    def Update(seff, params, variantId):
-        # Ejemplo de estructura JSON que recibe 
+    def Update(self, params, variantId):
+        # Ejemplo de estructura JSON que recibe
 
         # {
         #   "id": 2110,
@@ -126,14 +130,16 @@ class Variant():
         #  ]
         # }
 
-        # print "dataaaaa   -----  {}".format(params) 
+        # print "dataaaaa   -----  {}".format(params)
 
-        url = Environment.URL+'variants/'+variantId+'.json'
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'variants/' + variantId + '.json'
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 

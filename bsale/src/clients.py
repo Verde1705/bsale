@@ -66,13 +66,13 @@ class Clients():
         # concatena dic en limit=10&offset=0 por ejemplo
         params = urllib.urlencode(sorted(arguments.items()))
 
-        url = Environment.URL+'clients.json?'+params
-        access_token = Environment.AccessToken
+        url = Environment.URL + 'clients.json?' + params
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.get(url, headers=headers)
@@ -101,13 +101,13 @@ class Clients():
         #   "code": "2-7"
         # }
 
-        url = Environment.URL+'clients.json'
-        access_token = Environment.AccessToken
+        url = Environment.URL + 'clients.json'
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
@@ -115,7 +115,7 @@ class Clients():
         return r.json()
 
     def Update(seff, params, clientId):
-        # Ejemplo de estructura JSON que recibe 
+        # Ejemplo de estructura JSON que recibe
 
         # {
         #   "id": 2110,
@@ -134,15 +134,15 @@ class Clients():
         #  ]
         # }
 
-        # print "dataaaaa   -----  {}".format(params) 
+        # print "dataaaaa   -----  {}".format(params)
 
-        url = Environment.URL+'clients/'+clientId+'.json'
-        access_token = Environment.AccessToken
+        url = Environment.URL + 'clients/' + clientId + '.json'
+        access_token = self.itoken.getToken()
 
         headers = {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            'access_token':access_token
+            'access_token': access_token
         }
 
         r = requests.post(url, data=json.dumps(params), headers=headers)

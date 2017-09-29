@@ -29,7 +29,7 @@ class Stock():
             variantid=None,
             code=None,
             barcode=None):
-        #lista de stock
+        # lista de stock
 
         # Parametros
 
@@ -58,22 +58,22 @@ class Stock():
                 if values[x] != None:
                     arguments[x] = values[x]
 
-        #concatena dic en limit=10&offset=0 por ejemplo
-        params=urllib.urlencode(sorted(arguments.items()))
+        # concatena dic en limit=10&offset=0 por ejemplo
+        params = urllib.urlencode(sorted(arguments.items()))
 
-        url = Environment.URL+'stocks.json?'+params
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'stocks.json?' + params
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {'Content-type': 'application/json',
+                   'Accept': 'application/json',
+                   'access_token': access_token}
 
         r = requests.get(url, headers=headers)
 
         return r.json()
 
     @classmethod
-    def AddStock(self,params):
+    def AddStock(self, params):
         # POST /v1/stocks/receptions.json
         # Se debe enviar un Json con la siguiente estructura.
 
@@ -90,12 +90,12 @@ class Stock():
         #     }
         #   ],
         # }
-        url = Environment.URL+'stocks/receptions.json'
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'stocks/receptions.json'
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {'Content-type': 'application/json',
+                   'Accept': 'application/json',
+                   'access_token': access_token}
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 
@@ -106,14 +106,14 @@ class Stock():
         return r.json()
 
     @classmethod
-    def RemoveStock(self,params):
+    def RemoveStock(self, params):
         # POST /v1/stocks/consumptions.json
         # Se debe enviar un Json con la siguiente estructura.
         # officeId es el id de la "sucursal" en bsale
 
         # {
         #   "note": "prueba api",
-        #   "officeId": 1, 
+        #   "officeId": 1,
         #   "details": [
         #     {
         #       "quantity": 13,
@@ -122,12 +122,12 @@ class Stock():
         #   ]
         # }
 
-        url = Environment.URL+'stocks/consumptions.json'
-        access_token=Environment.AccessToken
+        url = Environment.URL + 'stocks/consumptions.json'
+        access_token = self.itoken.getToken()
 
-        headers= {'Content-type': 'application/json',
-                  'Accept': 'application/json',
-                  'access_token':access_token}
+        headers = {'Content-type': 'application/json',
+                   'Accept': 'application/json',
+                   'access_token': access_token}
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
 
@@ -136,4 +136,3 @@ class Stock():
         r = requests.post(url, data=json.dumps(data), headers=headers)
 
         return r.json()
-
