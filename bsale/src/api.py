@@ -8,6 +8,7 @@ from .product import Product
 from .shipping import Shipping
 from .stock import Stock
 from .variant import Variant
+from .users import Users
 from .itoken import iToken
 
 
@@ -41,6 +42,7 @@ class BsaleApiCLient(iToken):
         self.Shipping = Shipping(self)
         self.Stock = Stock(self)
         self.Variant = Variant(self)
+        self.Users = Users(self)
 
     # itoken implementation
     def getToken(self):

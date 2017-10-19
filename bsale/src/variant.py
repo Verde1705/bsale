@@ -2,36 +2,28 @@
 # -*- coding: UTF-8 -*-
 import requests
 import json
-import urllib
-import inspect
 
-from .itoken import iToken
-from constants import Environment
+from constants import Endpoints, Environment
+from endpoint import Endpoint
 
 
-class Variant():
-
-    itoken = ""
-
-    def __init__(self, itoken):
-        if not isinstance(itoken, iToken):
-            raise Exception("itoken, must be an iTokenInstance")
-
-        Variant.itoken = itoken
+class Variant(Endpoint):
 
     @classmethod
-    def Get(self,
-            limit=None,
-            offset=None,
-            fields=None,
-            expand=None,
-            description=None,
-            barcode=None,
-            code=None,
-            token=None,
-            serialnumber=None,
-            productid=None,
-            state=None):
+    def Get(
+        self,
+        limit=None,
+        offset=None,
+        fields=None,
+        expand=None,
+        description=None,
+        barcode=None,
+        code=None,
+        token=None,
+        serialnumber=None,
+        productid=None,
+        state=None
+    ):
         # limit, limita la cantidad de items de una respuesta JSON, si no se envía el limit es 25.
         # offset, permite paginar los items de una respuesta JSON, si no se envía el offset es 0.
         # fields, solo devolver atributos específicos de un recurso
@@ -49,31 +41,33 @@ class Variant():
         # GET /v1/variants.json?productid=26
         # GET /v1/variants.json?expand=[product]
 
-        # get all parameters
-        frame = inspect.currentframe()
-        args, _, _, values = inspect.getargvalues(frame)
-        arguments = dict()
+        return self.get(
+            Endpoints.VARIANTS,
+            limit=limit,
+            offset=offset,
+            fields=fields,
+            expand=expand,
+            description=description,
+            barcode=barcode,
+            code=code,
+            token=token,
+            serialnumber=serialnumber,
+            productid=productid,
+            state=state
+        )
 
-        for x in args:
-            if x != 'self':
-                if values[x] is not None:
-                    arguments[x] = values[x]
+    @classmethod
+    def GetOne(self, variant_id, expand=None):
+        # Parametros
 
-        # concatena dic en limit=10&offset=0 por ejemplo
-        params = urllib.urlencode(sorted(arguments.items()))
+        # expand, permite expandir instancias y colecciones.
+        # Ejemplos
 
-        url = Environment.URL + 'variants.json?' + params
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        # GET /v1/variants/5730.json?expand=[product]
+        return self.get(
+            Endpoints.VARIANT_ID.format(variant_id),
+            expand=expand
+        )
 
     @classmethod
     def Create(self, params):

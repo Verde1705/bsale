@@ -60,6 +60,240 @@ def mock_api_bsale(url, request):
             'content': {'error': 'The client has no name'}
         }
 
+    if "/v1/users.json" in url.path:
+        return {
+            'status_code': 200,
+            'content':
+            {
+                "href": "http://localhost:9292/v1/users.json",
+                "count": 121,
+                "limit": 2,
+                "offset": 0,
+                "items": [{
+                    "href": "http://localhost:9292/v1/users/32.json",
+                    "id": 32,
+                    "firstName": "Alejandro",
+                    "lastName": "Herrera",
+                    "email": "ah@gmail.com",
+                    "state": 0,
+                    "office": {
+                        "href": "http://localhost:9292/v1/offices/2.json",
+                        "id": "2"
+                    }
+                }, {
+                    "href": "http://localhost:9292/v1/users/88.json",
+                    "id": 88,
+                    "firstName": "Andrés",
+                    "lastName": "Oyarzo",
+                    "email": "aoyarzo@gmail.com",
+                    "state": 1,
+                    "office": {
+                        "href": "http://localhost:9292/v1/offices/2.json",
+                        "id": "2"
+                    }
+                }
+                ],
+                "next": "http://localhost:9292/v1/users.json?limit=2&offset=2"
+            }
+        }
+
+    if "/v1/users/sales_summary.json" in url.path:
+        return {
+            'status_code': 500,
+            'content': {
+                "startDate": 1438560000,
+                "endDate": 1438560000,
+                "total": 22882060,
+                "sellers": [{
+                        "href": "https://api.bsale.cl/v1/users/113.json",
+                        "id": 113,
+                        "fullName": "Daniela Valdes",
+                        "subtotal": 255000,
+                        "taxSubtotal": 40714,
+                        "sales": {
+                            "href": "https://api.bsale.cl/v1/users/113/sales.json?startdate=1438560000&enddate=1438560000"
+                        },
+                        "returns": {
+                            "href": "https://api.bsale.cl/v1/users/113/returns.json?startdate=1438560000&enddate=1438560000"
+                        }
+                    },
+                    {
+                        "href": "https://api.bsale.cl/v1/users/114.json",
+                        "id": 114,
+                        "fullName": "Lara  Galan",
+                        "subtotal": 255000,
+                        "taxSubtotal": 40714,
+                        "sales": {
+                            "href": "https://api.bsale.cl/v1/users/114/sales.json?startdate=1438560000&enddate=1438560000"
+                        },
+                        "returns": {
+                            "href": "https://api.bsale.cl/v1/users/114/returns.json?startdate=1438560000&enddate=1438560000"
+                        }
+                    },
+                    {
+                        "href": "https://api.bsale.cl/v1/users/128.json",
+                        "id": 128,
+                        "fullName": "Luis Guzman",
+                        "subtotal": 60,
+                        "taxSubtotal": 9,
+                        "sales": {
+                            "href": "https://api.bsale.cl/v1/users/128/sales.json?startdate=1438560000&enddate=1438560000"
+                        },
+                        "returns": {
+                            "href": "https://api.bsale.cl/v1/users/128/returns.json?startdate=1438560000&enddate=1438560000"
+                        }
+                    },
+                    {
+                        "href": "https://api.bsale.cl/v1/users/105.json",
+                        "id": 105,
+                        "fullName": "Maximo Mancilla",
+                        "subtotal": 22372000,
+                        "taxSubtotal": 3572000,
+                        "sales": {
+                            "href": "https://api.bsale.cl/v1/users/105/sales.json?startdate=1438560000&enddate=1438560000"
+                        },
+                        "returns": {
+                            "href": "https://api.bsale.cl/v1/users/105/returns.json?startdate=1438560000&enddate=1438560000"
+                        }
+                    }
+                ]
+            }
+        }
+
+    if "/v1/variants.json" in url.path:
+        return {
+            "status_code": 200,
+            "content": {
+                "href": "https://api.bsale.cl/v1/variants.json",
+                "count": 868,
+                "limit": 3,
+                "offset": 0,
+                "items": [{
+                        "href": "https://api.bsale.cl/v1/variants/1548.json",
+                        "id": 1548,
+                        "description": "120 ML",
+                        "unlimitedStock": 0,
+                        "allowNegativeStock": 0,
+                        "state": 0,
+                        "barCode": "1401291513",
+                        "code": "1401291513",
+                        "imagestionCenterCost": 0,
+                        "imagestionAccount": 0,
+                        "imagestionConceptCod": 0,
+                        "imagestionProyectCod": 0,
+                        "imagestionCategoryCod": 0,
+                        "imagestionProductId": 0,
+                        "serialNumber": 0,
+                        "prestashopCombinationId": 0,
+                        "prestashopValueId": 0,
+                        "product": {
+                            "href": "https://api.bsale.cl/v1/products/416.json",
+                            "id": "416"
+                        },
+                        "attribute_values": {
+                            "href": "https://api.bsale.cl/v1/variants/1548/attribute_values.json"
+                        },
+                        "costs": {
+                            "href": "https://api.bsale.cl/v1/variants/1548/costs.json"
+                        }
+                    },
+                    {
+                        "href": "https://api.bsale.cl/v1/variants/1555.json",
+                        "id": 1555,
+                        "description": "150 ML",
+                        "unlimitedStock": 0,
+                        "allowNegativeStock": 0,
+                        "state": 0,
+                        "barCode": "1400786476",
+                        "code": "1400786476",
+                        "imagestionCenterCost": 0,
+                        "imagestionAccount": 0,
+                        "imagestionConceptCod": 0,
+                        "imagestionProyectCod": 0,
+                        "imagestionCategoryCod": 0,
+                        "imagestionProductId": 0,
+                        "serialNumber": 0,
+                        "prestashopCombinationId": 0,
+                        "prestashopValueId": 0,
+                        "product": {
+                            "href": "https://api.bsale.cl/v1/products/420.json",
+                            "id": "420"
+                        },
+                        "attribute_values": {
+                            "href": "https://api.bsale.cl/v1/variants/1555/attribute_values.json"
+                        },
+                        "costs": {
+                            "href": "https://api.bsale.cl/v1/variants/1555/costs.json"
+                        }
+                    },
+                    {
+                        "href": "https://api.bsale.cl/v1/variants/2101.json",
+                        "id": 2101,
+                        "description": "300 ML",
+                        "unlimitedStock": 0,
+                        "allowNegativeStock": 0,
+                        "state": 0,
+                        "barCode": "1423687401",
+                        "code": "1423687401",
+                        "imagestionCenterCost": 0,
+                        "imagestionAccount": 0,
+                        "imagestionConceptCod": 0,
+                        "imagestionProyectCod": 0,
+                        "imagestionCategoryCod": 0,
+                        "imagestionProductId": 0,
+                        "serialNumber": 0,
+                        "prestashopCombinationId": 0,
+                        "prestashopValueId": 0,
+                        "product": {
+                            "href": "https://api.bsale.cl/v1/products/588.json",
+                            "id": "588"
+                        },
+                        "attribute_values": {
+                            "href": "https://api.bsale.cl/v1/variants/2101/attribute_values.json"
+                        },
+                        "costs": {
+                            "href": "https://api.bsale.cl/v1/variants/2101/costs.json"
+                        }
+                    }
+                ],
+                "next": "https://api.bsale.cl/v1/variants.json?limit=3&offset=3"
+            }
+        }
+
+    if "/v1/variants/1.json" in url.path:
+        return {
+            "status_code": 200,
+            "content": {
+                "href": "https://api.bsale.cl/v1/variants/2373.json",
+                "id": 2373,
+                "description": "240 ML",
+                "unlimitedStock": 0,
+                "allowNegativeStock": 0,
+                "state": 0,
+                "barCode": "1441310864",
+                "code": "1441310864",
+                "imagestionCenterCost": 0,
+                "imagestionAccount": 0,
+                "imagestionConceptCod": 0,
+                "imagestionProyectCod": 0,
+                "imagestionCategoryCod": 0,
+                "imagestionProductId": 0,
+                "serialNumber": 0,
+                "prestashopCombinationId": 0,
+                "prestashopValueId": 0,
+                "product": {
+                    "href": "https://api.bsale.cl/v1/products/656.json",
+                    "id": "656"
+                },
+                "attribute_values": {
+                    "href": "https://api.bsale.cl/v1/variants/2373/attribute_values.json"
+                },
+                "costs": {
+                    "href": "https://api.bsale.cl/v1/variants/2373/costs.json"
+                }
+            }
+        }
+
     logging.debug("no tiene")
     return {
         'status_code': 500,

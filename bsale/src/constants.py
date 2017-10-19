@@ -6,3 +6,17 @@ class Environment(object):
 
     URL = "https://api.bsale.cl/v1/"
     AccessToken = "8ef0ee4a6d26e2bdda847e8d57ea3a6b8e2d6de3"
+
+
+class Endpoints(object):
+    """structure contianing all the existing endpoints"""
+
+    DOCUMENTS = "documents.json"
+    DOCUMENT_ID = "documents/{}.json"
+    DOCUMENT_ID_DETAILS = "documents/{}/details.json"
+
+    USERS = "users.json"
+    USERS_SALES_SUMMARY = "users/sales_summary.json"
+
+    VARIANTS = "variants.json"
+    VARIANT_ID = "variants/{}.json"

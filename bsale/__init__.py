@@ -9,6 +9,7 @@ from .src.stock import Stock
 from .src.variant import Variant
 from .src.shipping import Shipping
 from .src.clients import Clients
+from .src.users import Users
 
 
 __all__ = [
@@ -18,5 +19,6 @@ __all__ = [
     "Stock",
     "Variant",
     "Shipping",
-    "Clients"
+    "Clients",
+    "Users"
 ]

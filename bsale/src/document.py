@@ -2,23 +2,12 @@
 # -*- coding: UTF-8 -*-
 import requests
 import json
-import urllib
-import inspect
+
+from constants import Environment, Endpoints
+from endpoint import Endpoint
 
 
-from .itoken import iToken
-from constants import Environment
-
-
-class Document(object):
-
-    itoken = ""
-
-    def __init__(self, itoken=iToken()):
-        if not isinstance(itoken, iToken):
-            raise Exception("itoken, must be an iTokenInstance")
-
-        Document.itoken = itoken
+class Document(Endpoint):
 
     @classmethod
     def Get(self,
@@ -61,30 +50,26 @@ class Document(object):
         # state, boolean (0 o 1) indica si los documentos están activos(0) inactivos (1).
 
         # get all parameters
-        frame = inspect.currentframe()
-        args, _, _, values = inspect.getargvalues(frame)
-        arguments = dict()
 
-        for x in args:
-            if x != 'self':
-                if values[x] is not None:
-                    arguments[x] = values[x]
-
-        # concatena dic en limit=10&offset=0 por ejemplo
-        params = urllib.urlencode(sorted(arguments.items()))
-
-        url = Environment.URL + 'documents.json?' + params
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        return self.get(
+            Endpoints.DOCUMENTS,
+            limit=limit,
+            offset=offset,
+            fields=fields,
+            expand=expand,
+            emissiondate=emissiondate,
+            expirationdate=expirationdate,
+            emissiondaterange=emissiondaterange,
+            number=number,
+            token=token,
+            documenttypeid=documenttypeid,
+            clientid=clientid,
+            clientcode=clientcode,
+            officeid=officeid,
+            saleconditionid=saleconditionid,
+            informedsii=informedsii,
+            state=state
+        )
 
     @classmethod
     def GetOneDocument(self, idDocument):
@@ -95,36 +80,12 @@ class Document(object):
         # Ejemplos
 
         # GET /v1/documents/421.json?expand=[document_type,office]
-
-        url = Environment.URL + 'documents/' + str(idDocument) + '.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        return self.get(Endpoints.DOCUMENT_ID.format(idDocument))
 
     @classmethod
     def GetDetailDocument(self, idDocument):
         # GET /v1/documents/12644/details.json
-
-        url = Environment.URL + 'documents/' + str(idDocument) + '/details.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        return self.get(Endpoints.DOCUMENT_ID_DETAILS.format(idDocument))
 
     @classmethod
     def Create(self, params):
