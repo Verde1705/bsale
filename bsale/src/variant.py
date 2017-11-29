@@ -126,7 +126,7 @@ class Variant(Endpoint):
 
         # print "dataaaaa   -----  {}".format(params)
 
-        url = Environment.URL + 'variants/' + variantId + '.json'
+        url = Environment.URL + 'variants/' + str(variantId) + '.json'
         access_token = self.itoken.getToken()
 
         headers = {
@@ -135,6 +135,6 @@ class Variant(Endpoint):
             'access_token': access_token
         }
 
-        r = requests.post(url, data=json.dumps(params), headers=headers)
+        r = requests.put(url, data=json.dumps(params), headers=headers)
 
         return r.json()
