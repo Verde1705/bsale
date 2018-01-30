@@ -1,0 +1,14 @@
+language: python
+python:
+  - "2.7"
+
+script: 
+  - python setup.py install
+  - python -m tests
+
+notifications:
+   slack:
+     rooms:
+       - loadingplay:CQg5lsp4Hi9OdB79EZndUnOX#bug
+     on_success: never # default: always
+     on_failure: always # default: always
