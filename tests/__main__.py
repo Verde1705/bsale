@@ -11,6 +11,7 @@ from stock import StockTestCase
 from api import APITestCase
 from users import UsersTestCase
 from variant import VariantTestCase
+from price_list import PriceListTestCase
 
 
 __all__ = [
@@ -20,7 +21,8 @@ __all__ = [
     "ClientTestCase",
     "UsersTestCase",
     "APITestCase",
-    "VariantTestCase"
+    "VariantTestCase",
+    "PriceListTestCase"
 ]
 
 

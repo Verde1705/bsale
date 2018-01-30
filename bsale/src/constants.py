@@ -20,3 +20,9 @@ class Endpoints(object):
 
     VARIANTS = "variants.json"
     VARIANT_ID = "variants/{}.json"
+
+    PRICE_LISTS = "price_lists.json"
+    PRICE_LISTS_ID = "price_lists/{}.json"
+    PRICE_LIST_ID_DETAILS = "price_lists/{}/details.json"
+    PRICE_LIST_ID_DETAILS_ID = "price_lists/{}/details/{}.json"
+    COUNT_PRICE_LIST = "price_lists/count.json"
