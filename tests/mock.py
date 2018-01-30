@@ -294,6 +294,112 @@ def mock_api_bsale(url, request):
             }
         }
 
+    if url.path == '/v1/price_lists.json':
+        return {
+            'status_code': 200,
+            'content': {
+                "href": "https://api.bsale.cl/v1/price_lists.json",
+                "count": 1,
+                "limit": 25,
+                "offset": 0,
+                "items": [{
+                    "href": "https://api.bsale.cl/v1/price_lists/1.json",
+                    "id": "1",
+                    "name": "Lista Base",
+                    "description": "",
+                    "state": 0,
+                    "coin": {
+                        "href": "https://api.bsale.cl/v1/coins/1.json",
+                        "id": "1"
+                    },
+                    "details": {
+                    "href": "https://api.bsale.cl/v1/price_lists/1/details.json"
+                    }
+                }]
+            }
+        }
+
+    if url.path == '/v1/price_lists/{price_list_id}.json'.format(price_list_id=1):
+        return {
+            'status_code': 200,
+            'content': {
+                "href": "https://api.bsale.cl/v1/price_lists/1.json",
+                "id": "1",
+                "name": "Lista Base",
+                "description": None,
+                "state": 0,
+                "coin": {
+                    "href": "https://api.bsale.cl/v1/coins/3.json",
+                    "id": "3"
+                },
+                "details": {
+                    "href": "https://api.bsale.cl/v1/price_lists/1/details.json"
+                }
+            }
+        }
+
+    if url.path == '/v1/price_lists/count.json':
+        return {
+            'status_code': 200,
+            'content': {
+                "count": 1
+            }
+        }
+
+    if url.path == '/v1/price_lists/{price_lists_id}/details.json'.format(price_lists_id=1):
+        return {
+            'status_code': 200,
+            'content': {
+                "href": "https://api.bsale.cl/v1/price_lists/1/details.json",
+                "count": 1,
+                "limit": 4,
+                "offset": 0,
+                "items": [{
+                    "href": "https://api.bsale.cl/v1/price_lists/1/details/1.json",
+                    "id": 1,
+                    "variantValue": 4590,
+                    "variantValueWithTaxes": 5462,
+                    "variant": {
+                        "href": "https://api.bsale.cl/v1/variant/1.json",
+                        "id": "1"
+                    }
+                }],
+                "next": "https://api.bsale.cl/v1/price_lists/1/details.json?limit=4&offset=4"
+            }
+        }
+
+    if url.path == '/v1/price_lists/{price_list_id}/details/{detail_id}.json'.format(price_list_id=1, detail_id=1) and request.method == 'GET':
+        return {
+            'status_code': 200,
+            'content': {
+                "href": "https://api.bsale.cl/v1/price_lists/1/details/1.json",
+                "id": 1,
+                "variantValue": 1000,
+                "variantValueWithTaxes": 1190,
+                "variant": {
+                    "href": "https://api.bsale.cl/v1/variant/1.json",
+                    "id": "1"
+                }
+            }
+        }
+
+    if url.path == '/v1/price_lists/{price_list_id}/details/{detail_id}.json'.format(price_list_id=1, detail_id=1) and request.method == 'PUT':
+        return {
+            'status_code': 200,
+            'content': {
+                "href": "https://api.bsale.cl/v1/price_lists/1/details/1.json",
+                "variantValue": 100.0,
+                "variantValueWithTaxes": 119.0,
+                "variant": {
+                    "href": "https://api.bsale.cl/v1/variant/1.json",
+                    "id": "1"
+                },
+                "id": 1
+            }
+        }
+
+   
+
     logging.debug("no tiene")
     return {
         'status_code': 500,

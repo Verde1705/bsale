@@ -10,6 +10,7 @@ from .stock import Stock
 from .variant import Variant
 from .users import Users
 from .itoken import iToken
+from .price_list import PriceList
 
 
 class BsaleApiCLient(iToken):
@@ -43,6 +44,7 @@ class BsaleApiCLient(iToken):
         self.Stock = Stock(self)
         self.Variant = Variant(self)
         self.Users = Users(self)
+        self.PriceList = PriceList(self)
 
     # itoken implementation
     def getToken(self):
