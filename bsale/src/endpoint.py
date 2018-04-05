@@ -3,10 +3,8 @@
 
 import requests
 import urllib
-import inspect
 from constants import Environment
 from .itoken import iToken
-import logging
 
 
 class Endpoint(object):
@@ -51,13 +49,11 @@ class Endpoint(object):
     def get_arguments(self, **args):
         """ return a dictionary with all arguments cleared
         """
-        logging.error(args)
         arguments = dict()
 
         for key, value in args.items():
             if value is not None:
                 arguments[key] = value
-        logging.error(arguments)
 
         return arguments
 
