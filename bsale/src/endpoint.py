@@ -3,7 +3,6 @@
 
 import requests
 import urllib
-import inspect
 from constants import Environment
 from .itoken import iToken
 
@@ -50,19 +49,16 @@ class Endpoint(object):
     def get_arguments(self, **args):
         """ return a dictionary with all arguments cleared
         """
-        frame = inspect.currentframe()
-        args, _, _, values = inspect.getargvalues(frame)
         arguments = dict()
 
-        for x in args:
-            if x != 'self' and x != "endpoint":
-                if values[x] is not None:
-                    arguments[x] = values[x]
+        for key, value in args.items():
+            if value is not None:
+                arguments[key] = value
 
         return arguments
 
     def generate_url(self, endpoint, arguments):
-        """ generate url ready arguments 
+        """ generate url ready arguments
         """
 
         params = urllib.urlencode(sorted(arguments.items()))
