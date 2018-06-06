@@ -19,6 +19,7 @@ class Endpoints(object):
     USERS_SALES_SUMMARY = "users/sales_summary.json"
 
     VARIANTS = "variants.json"
+    COUNT_VARIANTS = "variants/count.json"
     VARIANT_ID = "variants/{}.json"
 
     PRICE_LISTS = "price_lists.json"

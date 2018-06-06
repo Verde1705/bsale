@@ -1,4 +1,4 @@
-#!/usr/bin/python
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import requests
 import json
@@ -55,7 +55,7 @@ class Stock():
 
         for x in args:
             if x != 'self':
-                if values[x] != None:
+                if values[x] is not None:
                     arguments[x] = values[x]
 
         # concatena dic en limit=10&offset=0 por ejemplo
@@ -101,10 +101,6 @@ class Stock():
 
         return r.json()
 
-        r = requests.post(url, data=json.dumps(data), headers=headers)
-
-        return r.json()
-
     @classmethod
     def RemoveStock(self, params):
         # POST /v1/stocks/consumptions.json
@@ -130,9 +126,5 @@ class Stock():
                    'access_token': access_token}
 
         r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
-
-        r = requests.post(url, data=json.dumps(data), headers=headers)
 
         return r.json()

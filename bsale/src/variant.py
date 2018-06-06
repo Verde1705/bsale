@@ -138,3 +138,18 @@ class Variant(Endpoint):
         r = requests.put(url, data=json.dumps(params), headers=headers)
 
         return r.json()
+
+    @classmethod
+    def Count(self, state=0):
+        # Parametros
+
+        # state, permite filtrar por estado, activos (0) inactivos (1).
+        # Respuesta
+
+        # {
+        #   "count": 165
+        # }
+        return self.get(
+            Endpoints.COUNT_VARIANTS,
+            state=state
+        )
