@@ -10,7 +10,6 @@ def mock_api_bsale(url, request):
     """
     override all calls to accounts
     """
-
     logging.debug("url: {}".format(url.path))
     if url.path == '/v1/products.json':
         return {

@@ -10,6 +10,7 @@ class Environment(object):
 
 class Endpoints(object):
     """structure contianing all the existing endpoints"""
+    COUNT_PRODUCTS = "products/count.json" 
 
     DOCUMENTS = "documents.json"
     DOCUMENT_ID = "documents/{}.json"

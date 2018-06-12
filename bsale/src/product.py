@@ -5,10 +5,11 @@ import json
 import urllib
 import inspect
 from .itoken import iToken
-from constants import Environment
+from constants import Environment, Endpoints
+from endpoint import Endpoint
 
 
-class Product():
+class Product(Endpoint):
     """docstring for Product"""
 
     itoken = ""
@@ -208,3 +209,20 @@ class Product():
         r = requests.put(url, data=json.dumps(data), headers=headers)
 
         return r.json()
+    
+    @classmethod
+    def Count(self, state=0):
+        # GET /v1/products/count.json
+        ####Parametros
+
+        # state, permite filtrar por estado, activos (0) inactivos (1).
+        ####Respuesta
+
+        # {
+        # "count": 53
+        # }
+
+        return self.Get(
+            Endpoints.COUNT_VARIANTS,
+            state=state
+        )
