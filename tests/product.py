@@ -41,3 +41,9 @@ class ProductTestCase(unittest.TestCase):
             self.product = bsale.Product()
             id_product = 2334
             self.product.Remove(id_product)
+    
+    def test_count_products(self):
+        with HTTMock(mock_api_bsale):
+            self.product = bsale.Product()
+            self.product.Count()
+
