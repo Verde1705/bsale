@@ -32,10 +32,13 @@ class Document(Endpoint):
 
         # Parametros
 
-        # limit, limita la cantidad de items de una respuesta JSON, si no se envía el limit es 25.
-        # offset, permite paginar los items de una respuesta JSON, si no se envía el offset es 0.
+        # limit, limita la cantidad de items de una respuesta JSON,
+        # si no se envía el limit es 25.
+        # offset, permite paginar los items de una respuesta JSON, si no se
+        # envía el offset es 0.
         # fields, solo devolver atributos específicos de un recurso
-        # expand, permite expandir instancias y colecciones para traer relaciones en una sola petición.
+        # expand, permite expandir instancias y colecciones para traer
+        # relaciones en una sola petición.
         # emissiondate, filtra documentos por la fecha de emisión.
         # expirationdate, filtra documentos por la fecha de vencimiento.
         # emissiondaterange, filtra documentos por un rango de fecha.
@@ -46,8 +49,10 @@ class Document(Endpoint):
         # clientcode, filtra rut del cliente.
         # officeid, filtra documentos por la sucursal.
         # saleconditionid, filtra documentos por la condición de venta.
-        # informedsii, filtra documentos si fue declarado en el SII, 0 es correcto, 1 es enviado, 2 es rechazado (Integer).
-        # state, boolean (0 o 1) indica si los documentos están activos(0) inactivos (1).
+        # informedsii, filtra documentos si fue declarado en el SII, 0 es
+        # correcto, 1 es enviado, 2 es rechazado (Integer).
+        # state, boolean (0 o 1) indica si los documentos
+        # están activos(0) inactivos (1).
 
         # get all parameters
 
@@ -168,8 +173,11 @@ class Document(Endpoint):
     @classmethod
     def UpdateStateSII(self, idDocument, state):
         # PUT /v1/documents/set_sii_state.json
-        # En caso de necesitar el cambio de estado que indica si el documento fue declarado en el SII, se debe enviar un json con la siguiente estructura:
-        # informedSii, indica si el documento fue informado al SII, 0 es correcto, 1 es enviado, 2 es rechazado (Integer).
+        # En caso de necesitar el cambio de estado que indica si
+        # el documento fue declarado en el SII, se debe enviar un
+        # json con la siguiente estructura:
+        # informedSii, indica si el documento fue informado al SII
+        # 0 es correcto, 1 es enviado, 2 es rechazado (Integer).
         # {
         #    "id": 382,
         #    "informedSii": 1
@@ -197,7 +205,8 @@ class Document(Endpoint):
     def DeleteDocument(self, idDocument, officeid):
         # GET /v1/documents/12644/details.json
 
-        url = Environment.URL + 'documents/' + str(idDocument) + '.json?officeid=' + str(officeid)
+        url = Environment.URL + 'documents/' + str(idDocument) \
+            + '.json?officeid=' + str(officeid)
         access_token = self.itoken.getToken()
 
         headers = {

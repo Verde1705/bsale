@@ -10,15 +10,17 @@ from .src.variant import Variant
 from .src.shipping import Shipping
 from .src.clients import Clients
 from .src.users import Users
+from .src.document_type import DocumentType
 
 
 __all__ = [
     "API",
-    "Product", 
+    "Product",
     "Document",
     "Stock",
     "Variant",
     "Shipping",
     "Clients",
-    "Users"
+    "Users",
+    "DocumentType"
 ]
