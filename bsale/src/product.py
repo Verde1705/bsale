@@ -35,15 +35,18 @@ class Product(Endpoint):
 
         # Parametros
 
-        # limit, limita la cantidad de items de una respuesta JSON, si no se envía el limit es 25.
-        # offset, permite paginar los items de una respuesta JSON, si no se envía el offset es 0.
+        # limit, limita la cantidad de items de una respuesta JSON,
+        # si no se envía el limit es 25.
+        # offset, permite paginar los items de una respuesta JSON,
+        # si no se envía el offset es 0.
         # fields, solo devolver atributos específicos de un recurso
         # expand, permite expandir instancias y colecciones.
         # name, Permite filtrar por nombre del producto.
         # ledgeraccount, filtra por cuenta contable de los productos.
         # costcenter, filtra centro de costo de los productos.
         # producttypeid, filtra por tipo de producto.
-        # state, boolean (0 o 1) indica si los productos están activos(0) inactivos (1).
+        # state, boolean (0 o 1) indica si los productos
+        # están activos(0) inactivos (1).
 
         # Ejemplos
 
@@ -209,14 +212,14 @@ class Product(Endpoint):
         r = requests.put(url, data=json.dumps(data), headers=headers)
 
         return r.json()
-    
+
     @classmethod
     def Count(self, state=0):
         # GET /v1/products/count.json
-        ####Parametros
+        # Parametros
 
         # state, permite filtrar por estado, activos (0) inactivos (1).
-        ####Respuesta
+        # Respuesta
 
         # {
         # "count": 53

@@ -12,6 +12,7 @@ from api import APITestCase
 from users import UsersTestCase
 from variant import VariantTestCase
 from price_list import PriceListTestCase
+from document_type import DocumentTypeTestCase
 
 
 __all__ = [
@@ -22,7 +23,8 @@ __all__ = [
     "UsersTestCase",
     "APITestCase",
     "VariantTestCase",
-    "PriceListTestCase"
+    "PriceListTestCase",
+    "DocumentTypeTestCase"
 ]
 
 

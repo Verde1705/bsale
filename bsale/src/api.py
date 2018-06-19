@@ -11,6 +11,7 @@ from .variant import Variant
 from .users import Users
 from .itoken import iToken
 from .price_list import PriceList
+from .document_type import DocumentType
 
 
 class BsaleApiCLient(iToken):
@@ -45,6 +46,7 @@ class BsaleApiCLient(iToken):
         self.Variant = Variant(self)
         self.Users = Users(self)
         self.PriceList = PriceList(self)
+        self.DocumentType = DocumentType(self)
 
     # itoken implementation
     def getToken(self):

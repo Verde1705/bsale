@@ -8,7 +8,7 @@ from .itoken import iToken
 
 
 class Endpoint(object):
-    """base class for bsale enpoints, should be capable of 
+    """base class for bsale enpoints, should be capable of
     performing get, post, put and delete
     """
 
@@ -27,7 +27,6 @@ class Endpoint(object):
 
         instance = self.instance()
         arguments = instance.get_arguments(**args)
-
         # concatena dic en limit=10&offset=0 por ejemplo
         url = instance.generate_url(endpoint, arguments)
         headers = instance.generate_headers()

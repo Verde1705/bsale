@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          #!/usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import requests
 import json
@@ -33,8 +33,10 @@ class Stock():
 
         # Parametros
 
-        # limit, limita la cantidad de items de una respuesta JSON, si no se envía el limit es 25.
-        # offset, permite paginar los items de una respuesta JSON, si no se envía el offset es 0.
+        # limit, limita la cantidad de items de una respuesta JSON,
+        # si no se envía el limit es 25.
+        # offset, permite paginar los items de una respuesta JSON,
+        # si no se envía el offset es 0.
         # fields, solo devolver atributos específicos de un recurso
         # expand, permite expandir instancias y colecciones.
         # officeid, Permite filtrar por sucursal.
