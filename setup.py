@@ -10,5 +10,5 @@ setup(
     author='Estefany Campos',
     author_email='estefany@loadingplay.com',
     url='https://www.loadingplay.com/',
-    packages=['bsale', 'bsale.src']
+    packages=['bsale', 'bsale.src', 'bsale.mocks']
 )
