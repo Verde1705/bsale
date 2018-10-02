@@ -12,6 +12,7 @@ def mock_api_bsale(url, request):
     override all calls to accounts
     """
     logging.debug("url: {}".format(url.path))
+    print url
     if url.path == '/v1/products.json':
         return {
             'status_code': 200,
@@ -245,318 +246,362 @@ def mock_api_bsale(url, request):
         }
 
     if url.path == '/v1/documents.json':
-        return {
-            'status_code': 200,
-            'content': {
-                'count': 18385,
-                'items': [{
-                    'office': {
-                        'href': 'https://api.bsale.cl/v1/offices/2.json',
-                        'id': '2'
-                    },
-                    'commissionTotalAmount': 0.0,
-                    'municipality': None,
-                    'number': 1,
-                    'exportTaxAmount': 0.0,
-                    'href': 'https://api.bsale.cl/v1/documents/382.json',
-                    'references': {
-                        'href': "https://api.bsale.cl/v1/documents/"
-                                "382/references.json"
-                    },
-                    'exportExemptAmount': 0.0,
-                    'purchaseTotalAmount': 0.0,
-                    'urlXml': None,
-                    'netAmount': 12000.0,
-                    'exportTotalAmount': 0.0,
-                    'city': None,
-                    'coin': {
-                        'href': 'https://api.bsale.cl/v1/coins/1.json',
-                        'id': '1'
-                    },
-                    'urlPdf': 'http://app2.bsale.cl/view/'
-                              '2/439d299fb053.pdf?sfd=99',
-                    'urlPdfOriginal': 'http://app2.bsale.cl/view/'
-                                      '2/439d299fb053.pdf',
-                    'id': 382,
-                    'state': 0,
-                    'details': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '382/details.json'
-                    },
-                    'purchaseTaxAmount': 0.0,
-                    'urlPublicView': 'http://app2.bsale.cl/view/'
-                                     '2/439d299fb053?sfd=99',
-                    'percentageTaxWithheld': 0.0,
-                    'totalAmount': 14280.0,
-                    'exportNetAmount': 0.0,
-                    'ted': None,
-                    'sellers': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '382/sellers.json'
-                    },
-                    'document_taxes': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '382/document_taxes.json'
-                    },
-                    'urlTimbre': '',
-                    'user': {
-                        'href': 'https://api.bsale.cl/v1/users/2.json',
-                        'id': '2'
-                    },
-                    'address': None,
-                    'document_type': {
-                        'href': 'https://api.bsale.cl/v1/'
-                                'document_types/1.json',
-                        'id': '1'
-                    },
-                    'informedSii': 1,
-                    'taxAmount': 2280.0,
-                    'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
-                                             '2/439d299fb053',
-                    'responseMsgSii': None,
-                    'generationDate': '',
-                    'commissionRate': 0.0,
-                    'exemptAmount': 0.0,
-                    'token': '439d299fb053',
-                    'emissionDate': 1350604800,
-                    'commissionNetAmount': 0.0,
-                    'commissionTaxAmount': 0.0,
-                    'expirationDate': 1350604800
-                }, {
-                    'office': {
-                        'href': 'https://api.bsale.cl/v1/offices/2.json',
-                        'id': '2'
-                    },
-                    'commissionTotalAmount': 0.0,
-                    'municipality': None,
-                    'number': 1,
-                    'exportTaxAmount': 0.0,
-                    'href': 'https://api.bsale.cl/v1/documents/404.json',
-                    'references': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '404/references.json'
-                    },
-                    'exportExemptAmount': 0.0,
-                    'purchaseTotalAmount': 0.0,
-                    'urlXml': None,
-                    'netAmount': 0.0,
-                    'exportTotalAmount': 0.0,
-                    'city': None,
-                    'coin': {
-                        'href': 'https://api.bsale.cl/v1/coins/1.json',
-                        'id': '1'
-                    },
-                    'urlPdf': 'http://app2.bsale.cl/view/'
-                              '2/ad0496679450.pdf?sfd=99',
-                    'urlPdfOriginal': 'http://app2.bsale.cl/view/'
-                                      '2/ad0496679450.pdf',
-                    'id': 404,
-                    'state': 0,
-                    'details': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '404/details.json'
-                    },
-                    'purchaseTaxAmount': 0.0,
-                    'urlPublicView': 'http://app2.bsale.cl/view/'
-                                     '2/ad0496679450?sfd=99',
-                    'percentageTaxWithheld': 0.0,
-                    'totalAmount': 14280.0,
-                    'exportNetAmount': 0.0,
-                    'ted': None,
-                    'sellers': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '404/sellers.json'
-                    },
-                    'document_taxes': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '404/document_taxes.json'
-                    },
-                    'urlTimbre': None,
-                    'user': {
-                        'href': 'https://api.bsale.cl/v1/users/20.json',
-                        'id': '20'
-                    },
-                    'address': None,
-                    'document_type': {
-                        'href': 'https://api.bsale.cl/v1/'
-                                'document_types/3.json',
-                        'id': '3'
-                    },
-                    'informedSii': 1,
-                    'taxAmount': 0.0,
-                    'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
-                                             '2/ad0496679450',
-                    'responseMsgSii': None,
-                    'generationDate': '',
-                    'commissionRate': 0.0,
-                    'exemptAmount': 0.0,
-                    'token': 'ad0496679450',
-                    'emissionDate': 1351036800,
-                    'commissionNetAmount': 0.0,
-                    'commissionTaxAmount': 0.0,
-                    'expirationDate': 1351036800
-                }, {
-                    'office': {
-                        'href': 'https://api.bsale.cl/v1/offices/2.json',
-                        'id': '2'
-                    },
-                    'commissionTotalAmount': 0.0,
-                    'municipality': 'Santiago',
-                    'number': 1,
-                    'exportTaxAmount': 0.0,
-                    'href': 'https://api.bsale.cl/v1/documents/421.json',
-                    'references': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '421/references.json'
-                    },
-                    'exportExemptAmount': 0.0,
-                    'purchaseTotalAmount': 0.0,
-                    'urlXml': None,
-                    'netAmount': 4300000.0,
-                    'exportTotalAmount': 0.0,
-                    'city': 'Santiago',
-                    'coin': {
-                        'href': 'https://api.bsale.cl/v1/coins/1.json',
-                        'id': '1'
-                    },
-                    'urlPdf': 'http://app2.bsale.cl/view/'
-                              '2/f806d6a6ae73.pdf?sfd=99',
-                    'urlPdfOriginal': 'http://app2.bsale.cl/view/'
-                                      '2/f806d6a6ae73.pdf',
-                    'id': 421,
-                    'state': 0,
-                    'details': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '421/details.json'
-                    },
-                    'purchaseTaxAmount': 0.0,
-                    'urlPublicView': 'http://app2.bsale.cl/view/'
-                                     '2/f806d6a6ae73?sfd=99',
-                    'percentageTaxWithheld': 0.0,
-                    'totalAmount': 5117000.0,
-                    'exportNetAmount': 0.0,
-                    'ted': None,
-                    'sellers': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '421/sellers.json'
-                    },
-                    'document_taxes': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '421/document_taxes.json'
-                    },
-                    'urlTimbre': None,
-                    'user': {
-                        'href': 'https://api.bsale.cl/v1/users/2.json',
-                        'id': '2'
-                    },
-                    'address': 'San Francisco 402, jj perez 7248',
-                    'document_type': {
-                        'href': 'https://api.bsale.cl/v1/'
-                                'document_types/4.json',
-                        'id': '4'
-                    },
-                    'informedSii': 2,
-                    'taxAmount': 817000.0,
-                    'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
-                                             '2/f806d6a6ae73',
-                    'responseMsgSii': None,
-                    'generationDate': '',
-                    'commissionRate': 0.0,
-                    'exemptAmount': 0.0,
-                    'token': 'f806d6a6ae73',
-                    'client': {
-                        'href': 'https://api.bsale.cl/v1/clients/7.json',
-                        'id': '7'
-                    },
-                    'emissionDate': 1351641600,
-                    'commissionNetAmount': 0.0,
-                    'commissionTaxAmount': 0.0,
-                    'expirationDate': 1351641600
-                }, {
-                    'office': {
-                        'href': 'https://api.bsale.cl/v1/offices/2.json',
-                        'id': '2'
-                    },
-                    'commissionTotalAmount': 0.0,
-                    'municipality': '',
-                    'number': 1,
-                    'exportTaxAmount': 0.0,
-                    'href': 'https://api.bsale.cl/v1/documents/439.json',
-                    'references': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '439/references.json'
-                    },
-                    'exportExemptAmount': 0.0,
-                    'purchaseTotalAmount': 0.0,
-                    'urlXml': None,
-                    'netAmount': 0.0,
-                    'exportTotalAmount': 0.0,
-                    'city': '',
-                    'coin': {
-                        'href': 'https://api.bsale.cl/v1/coins/1.json',
-                        'id': '1'
-                    },
-                    'urlPdf': 'http://app2.bsale.cl/view/'
-                              '2/814cd621b88b.pdf?sfd=99',
-                    'urlPdfOriginal': 'http://app2.bsale.cl/view/'
-                                      '2/814cd621b88b.pdf',
-                    'id': 439,
-                    'state': 0,
-                    'details': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '439/details.json'
-                    },
-                    'purchaseTaxAmount': 0.0,
-                    'urlPublicView': 'http://app2.bsale.cl/view/'
-                                     '2/814cd621b88b?sfd=99',
-                    'percentageTaxWithheld': 0.0,
-                    'totalAmount': 0.0,
-                    'exportNetAmount': 0.0,
-                    'ted': None,
-                    'sellers': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '439/sellers.json'
-                    },
-                    'document_taxes': {
-                        'href': 'https://api.bsale.cl/v1/documents/'
-                                '439/document_taxes.json'
-                    },
-                    'urlTimbre': None,
-                    'user': {
-                        'href': 'https://api.bsale.cl/v1/users/2.json',
-                        'id': '2'
-                    },
-                    'address': '',
-                    'document_type': {
-                        'href': 'https://api.bsale.cl/v1/'
-                                'document_types/2.json',
-                        'id': '2'
-                    },
-                    'informedSii': 1,
-                    'taxAmount': 0.0,
-                    'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
-                                             '2/814cd621b88b',
-                    'responseMsgSii': None,
-                    'generationDate': '',
-                    'commissionRate': 0.0,
-                    'exemptAmount': 0.0,
-                    'token': '814cd621b88b',
-                    'client': {
-                        'href': 'https://api.bsale.cl/v1/clients/1.json',
-                        'id': '1'
-                    },
-                    'emissionDate': 1351641600,
-                    'commissionNetAmount': 0.0,
-                    'commissionTaxAmount': 0.0,
-                    'expirationDate': 1351641600
-                }],
-                'next': 'https://api.bsale.cl/v1/'
-                        'documents.json?limit=4&offset=4',
-                'href': 'https://api.bsale.cl/v1/documents.json',
-                'limit': 4,
-                'offset': 0
+        if request.method == "GET":
+            return {
+                'status_code': 200,
+                'content': {
+                    'count': 18385,
+                    'items': [{
+                        'office': {
+                            'href': 'https://api.bsale.cl/v1/offices/2.json',
+                            'id': '2'
+                        },
+                        'commissionTotalAmount': 0.0,
+                        'municipality': None,
+                        'number': 1,
+                        'exportTaxAmount': 0.0,
+                        'href': 'https://api.bsale.cl/v1/documents/382.json',
+                        'references': {
+                            'href': "https://api.bsale.cl/v1/documents/"
+                                    "382/references.json"
+                        },
+                        'exportExemptAmount': 0.0,
+                        'purchaseTotalAmount': 0.0,
+                        'urlXml': None,
+                        'netAmount': 12000.0,
+                        'exportTotalAmount': 0.0,
+                        'city': None,
+                        'coin': {
+                            'href': 'https://api.bsale.cl/v1/coins/1.json',
+                            'id': '1'
+                        },
+                        'urlPdf': 'http://app2.bsale.cl/view/'
+                                '2/439d299fb053.pdf?sfd=99',
+                        'urlPdfOriginal': 'http://app2.bsale.cl/view/'
+                                        '2/439d299fb053.pdf',
+                        'id': 382,
+                        'state': 0,
+                        'details': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '382/details.json'
+                        },
+                        'purchaseTaxAmount': 0.0,
+                        'urlPublicView': 'http://app2.bsale.cl/view/'
+                                        '2/439d299fb053?sfd=99',
+                        'percentageTaxWithheld': 0.0,
+                        'totalAmount': 14280.0,
+                        'exportNetAmount': 0.0,
+                        'ted': None,
+                        'sellers': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '382/sellers.json'
+                        },
+                        'document_taxes': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '382/document_taxes.json'
+                        },
+                        'urlTimbre': '',
+                        'user': {
+                            'href': 'https://api.bsale.cl/v1/users/2.json',
+                            'id': '2'
+                        },
+                        'address': None,
+                        'document_type': {
+                            'href': 'https://api.bsale.cl/v1/'
+                                    'document_types/1.json',
+                            'id': '1'
+                        },
+                        'informedSii': 1,
+                        'taxAmount': 2280.0,
+                        'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
+                                                '2/439d299fb053',
+                        'responseMsgSii': None,
+                        'generationDate': '',
+                        'commissionRate': 0.0,
+                        'exemptAmount': 0.0,
+                        'token': '439d299fb053',
+                        'emissionDate': 1350604800,
+                        'commissionNetAmount': 0.0,
+                        'commissionTaxAmount': 0.0,
+                        'expirationDate': 1350604800
+                    }, {
+                        'office': {
+                            'href': 'https://api.bsale.cl/v1/offices/2.json',
+                            'id': '2'
+                        },
+                        'commissionTotalAmount': 0.0,
+                        'municipality': None,
+                        'number': 1,
+                        'exportTaxAmount': 0.0,
+                        'href': 'https://api.bsale.cl/v1/documents/404.json',
+                        'references': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '404/references.json'
+                        },
+                        'exportExemptAmount': 0.0,
+                        'purchaseTotalAmount': 0.0,
+                        'urlXml': None,
+                        'netAmount': 0.0,
+                        'exportTotalAmount': 0.0,
+                        'city': None,
+                        'coin': {
+                            'href': 'https://api.bsale.cl/v1/coins/1.json',
+                            'id': '1'
+                        },
+                        'urlPdf': 'http://app2.bsale.cl/view/'
+                                '2/ad0496679450.pdf?sfd=99',
+                        'urlPdfOriginal': 'http://app2.bsale.cl/view/'
+                                        '2/ad0496679450.pdf',
+                        'id': 404,
+                        'state': 0,
+                        'details': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '404/details.json'
+                        },
+                        'purchaseTaxAmount': 0.0,
+                        'urlPublicView': 'http://app2.bsale.cl/view/'
+                                        '2/ad0496679450?sfd=99',
+                        'percentageTaxWithheld': 0.0,
+                        'totalAmount': 14280.0,
+                        'exportNetAmount': 0.0,
+                        'ted': None,
+                        'sellers': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '404/sellers.json'
+                        },
+                        'document_taxes': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '404/document_taxes.json'
+                        },
+                        'urlTimbre': None,
+                        'user': {
+                            'href': 'https://api.bsale.cl/v1/users/20.json',
+                            'id': '20'
+                        },
+                        'address': None,
+                        'document_type': {
+                            'href': 'https://api.bsale.cl/v1/'
+                                    'document_types/3.json',
+                            'id': '3'
+                        },
+                        'informedSii': 1,
+                        'taxAmount': 0.0,
+                        'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
+                                                '2/ad0496679450',
+                        'responseMsgSii': None,
+                        'generationDate': '',
+                        'commissionRate': 0.0,
+                        'exemptAmount': 0.0,
+                        'token': 'ad0496679450',
+                        'emissionDate': 1351036800,
+                        'commissionNetAmount': 0.0,
+                        'commissionTaxAmount': 0.0,
+                        'expirationDate': 1351036800
+                    }, {
+                        'office': {
+                            'href': 'https://api.bsale.cl/v1/offices/2.json',
+                            'id': '2'
+                        },
+                        'commissionTotalAmount': 0.0,
+                        'municipality': 'Santiago',
+                        'number': 1,
+                        'exportTaxAmount': 0.0,
+                        'href': 'https://api.bsale.cl/v1/documents/421.json',
+                        'references': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '421/references.json'
+                        },
+                        'exportExemptAmount': 0.0,
+                        'purchaseTotalAmount': 0.0,
+                        'urlXml': None,
+                        'netAmount': 4300000.0,
+                        'exportTotalAmount': 0.0,
+                        'city': 'Santiago',
+                        'coin': {
+                            'href': 'https://api.bsale.cl/v1/coins/1.json',
+                            'id': '1'
+                        },
+                        'urlPdf': 'http://app2.bsale.cl/view/'
+                                '2/f806d6a6ae73.pdf?sfd=99',
+                        'urlPdfOriginal': 'http://app2.bsale.cl/view/'
+                                        '2/f806d6a6ae73.pdf',
+                        'id': 421,
+                        'state': 0,
+                        'details': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '421/details.json'
+                        },
+                        'purchaseTaxAmount': 0.0,
+                        'urlPublicView': 'http://app2.bsale.cl/view/'
+                                        '2/f806d6a6ae73?sfd=99',
+                        'percentageTaxWithheld': 0.0,
+                        'totalAmount': 5117000.0,
+                        'exportNetAmount': 0.0,
+                        'ted': None,
+                        'sellers': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '421/sellers.json'
+                        },
+                        'document_taxes': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '421/document_taxes.json'
+                        },
+                        'urlTimbre': None,
+                        'user': {
+                            'href': 'https://api.bsale.cl/v1/users/2.json',
+                            'id': '2'
+                        },
+                        'address': 'San Francisco 402, jj perez 7248',
+                        'document_type': {
+                            'href': 'https://api.bsale.cl/v1/'
+                                    'document_types/4.json',
+                            'id': '4'
+                        },
+                        'informedSii': 2,
+                        'taxAmount': 817000.0,
+                        'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
+                                                '2/f806d6a6ae73',
+                        'responseMsgSii': None,
+                        'generationDate': '',
+                        'commissionRate': 0.0,
+                        'exemptAmount': 0.0,
+                        'token': 'f806d6a6ae73',
+                        'client': {
+                            'href': 'https://api.bsale.cl/v1/clients/7.json',
+                            'id': '7'
+                        },
+                        'emissionDate': 1351641600,
+                        'commissionNetAmount': 0.0,
+                        'commissionTaxAmount': 0.0,
+                        'expirationDate': 1351641600
+                    }, {
+                        'office': {
+                            'href': 'https://api.bsale.cl/v1/offices/2.json',
+                            'id': '2'
+                        },
+                        'commissionTotalAmount': 0.0,
+                        'municipality': '',
+                        'number': 1,
+                        'exportTaxAmount': 0.0,
+                        'href': 'https://api.bsale.cl/v1/documents/439.json',
+                        'references': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '439/references.json'
+                        },
+                        'exportExemptAmount': 0.0,
+                        'purchaseTotalAmount': 0.0,
+                        'urlXml': None,
+                        'netAmount': 0.0,
+                        'exportTotalAmount': 0.0,
+                        'city': '',
+                        'coin': {
+                            'href': 'https://api.bsale.cl/v1/coins/1.json',
+                            'id': '1'
+                        },
+                        'urlPdf': 'http://app2.bsale.cl/view/'
+                                '2/814cd621b88b.pdf?sfd=99',
+                        'urlPdfOriginal': 'http://app2.bsale.cl/view/'
+                                        '2/814cd621b88b.pdf',
+                        'id': 439,
+                        'state': 0,
+                        'details': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '439/details.json'
+                        },
+                        'purchaseTaxAmount': 0.0,
+                        'urlPublicView': 'http://app2.bsale.cl/view/'
+                                        '2/814cd621b88b?sfd=99',
+                        'percentageTaxWithheld': 0.0,
+                        'totalAmount': 0.0,
+                        'exportNetAmount': 0.0,
+                        'ted': None,
+                        'sellers': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '439/sellers.json'
+                        },
+                        'document_taxes': {
+                            'href': 'https://api.bsale.cl/v1/documents/'
+                                    '439/document_taxes.json'
+                        },
+                        'urlTimbre': None,
+                        'user': {
+                            'href': 'https://api.bsale.cl/v1/users/2.json',
+                            'id': '2'
+                        },
+                        'address': '',
+                        'document_type': {
+                            'href': 'https://api.bsale.cl/v1/'
+                                    'document_types/2.json',
+                            'id': '2'
+                        },
+                        'informedSii': 1,
+                        'taxAmount': 0.0,
+                        'urlPublicViewOriginal': 'http://app2.bsale.cl/view/'
+                                                '2/814cd621b88b',
+                        'responseMsgSii': None,
+                        'generationDate': '',
+                        'commissionRate': 0.0,
+                        'exemptAmount': 0.0,
+                        'token': '814cd621b88b',
+                        'client': {
+                            'href': 'https://api.bsale.cl/v1/clients/1.json',
+                            'id': '1'
+                        },
+                        'emissionDate': 1351641600,
+                        'commissionNetAmount': 0.0,
+                        'commissionTaxAmount': 0.0,
+                        'expirationDate': 1351641600
+                    }],
+                    'next': 'https://api.bsale.cl/v1/'
+                            'documents.json?limit=4&offset=4',
+                    'href': 'https://api.bsale.cl/v1/documents.json',
+                    'limit': 4,
+                    'offset': 0
+                }
             }
-        }
+        if request.method == "POST":
+            return {
+                'status_code': 200,
+                'content': {
+                    "urlTimbre": "http://s3.amazonaws.com/bsale/"
+                                 "timbres/T33_F933.png",
+                    "client": {
+                        "href": "https://api.bsale.cl/v1/clients/211.json",
+                        "id": "211"
+                    },
+                    "address": "direccion valida",
+                    "token": "a1a3291afd78",
+                    "userId": 1,
+                    "exemptAmount": 0.0,
+                    "office": {
+                        "href": "https://api.bsale.cl/v1/offices/1.json",
+                        "id": "1"
+                    },
+                    "urlXml": " ",
+                    "expirationDate": 1407643200,
+                    "municipality": "puerto montt",
+                    "netAmount": 53975.0,
+                    "totalAmount": 74486.0,
+                    "document_type": {
+                        "href": "https://api.bsale.cl/"
+                        "v1/document_types/8.json",
+                        "id": "8"
+                    },
+                    "taxAmount": 20511.0,
+                    "number": 933,
+                    "href": "https://api.bsale.cl/v1/documents/11561.json",
+                    "emissionDate": 1407643200,
+                    "urlPdf": "http://app.bsale.cl/view/339/a1a3291afd78.pdf",
+                    "urlPublicView": "url",
+                    "id": 11561,
+                    "references": {
+                        "href": "https://api.bsale.cl/v1/documents/"
+                        "11561/references.json"
+                    },
+                    "city": "puerto montt",
+                    "state": 0
+                    }
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
     if url.path == '/v1/documents/14528/details.json':
         return {
