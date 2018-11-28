@@ -22,6 +22,14 @@ class DocumentTestCase(unittest.TestCase):
             id_document = 10829
             self.document.GetOneDocument(id_document)
 
+    def test_get_document_sellers(self):
+        with HTTMock(mock_api_bsale):
+            self.document = bsale.Document()
+
+            id_document = 10829
+            seller = self.document.GetDocumentSeller(id_document)['items'][0]
+            self.assertEquals(seller["id"], 2)
+
     def test_update_state_sii(self):
         with HTTMock(mock_api_bsale):
             self.document = bsale.Document()
