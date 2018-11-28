@@ -15,6 +15,7 @@ class Endpoints(object):
     DOCUMENTS = "documents.json"
     DOCUMENT_ID = "documents/{}.json"
     DOCUMENT_ID_DETAILS = "documents/{}/details.json"
+    DOCUMENT_ID_SELLERS = "documents/{}/sellers.json"
 
     DOCUMENT_TYPES = "document_types.json"
     DOCUMENT_TYPES_ID = "document_types/{}.json"

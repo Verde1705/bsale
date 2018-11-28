@@ -93,6 +93,11 @@ class Document(Endpoint):
         return self.get(Endpoints.DOCUMENT_ID_DETAILS.format(idDocument))
 
     @classmethod
+    def GetDocumentSeller(self, idDocument):
+        # GET /v1/documents/12644/details.json
+        return self.get(Endpoints.DOCUMENT_ID_SELLERS.format(idDocument))
+
+    @classmethod
     def Create(self, params):
         # Ejemplo de estructura JSON
 

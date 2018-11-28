@@ -653,6 +653,22 @@ def mock_api_bsale(url, request):
             }
         }
 
+    if url.path == '/v1/documents/10829/sellers.json':
+        return {
+            "href": "https://api.bsale.cl/v1/documents/421/sellers.json",
+            "count": 1,
+            "limit": 25,
+            "offset": 0,
+            "items": [
+                {
+                    "href": "https://api.bsale.cl/v1/users/2.json",
+                    "id": 2,
+                    "firstName": "Demo",
+                    "lastName": "Bsale"
+                }
+            ]
+        }
+
     if url.path == '/v1/returns.json':
         return {
             'status_code': 200,
