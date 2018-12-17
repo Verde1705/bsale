@@ -5,14 +5,14 @@
 import unittest
 
 
-from product import ProductTestCase
-from document import DocumentTestCase
-from stock import StockTestCase
-from api import APITestCase
-from users import UsersTestCase
-from variant import VariantTestCase
-from price_list import PriceListTestCase
-from document_type import DocumentTypeTestCase
+from .product import ProductTestCase
+from .document import DocumentTestCase
+from .stock import StockTestCase
+from .api import APITestCase
+from .users import UsersTestCase
+from .variant import VariantTestCase
+from .price_list import PriceListTestCase
+from .document_type import DocumentTypeTestCase
 
 
 __all__ = [
