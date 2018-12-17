@@ -3,8 +3,8 @@
 import requests
 import json
 
-from constants import Endpoints, Environment
-from endpoint import Endpoint
+from .constants import Endpoints, Environment
+from .endpoint import Endpoint
 
 
 class PriceList(Endpoint):
@@ -129,5 +129,5 @@ class PriceList(Endpoint):
             'access_token': access_token
         }
         r = requests.put(url, headers=headers, data=json.dumps(params))
-        
+
         return r.json()
