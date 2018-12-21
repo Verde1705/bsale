@@ -12,7 +12,6 @@ def mock_api_bsale(url, request):
     override all calls to accounts
     """
     logging.debug("url: {}".format(url.path))
-    print url
     if url.path == '/v1/products.json':
         return {
             'status_code': 200,
@@ -906,7 +905,7 @@ def mock_api_bsale(url, request):
             "status_code": 200,
             "content": {
                 "href": "https://api.bsale.cl/v1/variants/2373.json",
-                "id": 2373,
+                "id": 1,
                 "description": "240 ML",
                 "unlimitedStock": 0,
                 "allowNegativeStock": 0,
