@@ -140,6 +140,22 @@ class Variant(Endpoint):
         return r.json()
 
     @classmethod
+    def Remove(self, variantId):
+
+        url = Environment.URL + 'variants/' + str(variantId) + '.json'
+        access_token = self.itoken.getToken()
+
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
+
+        r = requests.delete(url, headers=headers)
+
+        return r.json()
+
+    @classmethod
     def Count(self, state=0):
         # Parametros
 

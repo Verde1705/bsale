@@ -37,3 +37,28 @@ class VariantTestCase(unittest.TestCase):
             self.assertIn("prestashopCombinationId", variant)
             self.assertIn("prestashopValueId", variant)
             self.assertIn("product", variant)
+
+    def test_remove(self):
+
+        with HTTMock(mock_api_bsale):
+            self.variant = bsale.Variant()
+            variant = self.variant.Remove("1")
+
+            # check if fields exists
+            self.assertIn("id", variant)
+            self.assertIn("description", variant)
+            self.assertIn("unlimitedStock", variant)
+            self.assertIn("allowNegativeStock", variant)
+            self.assertIn("state", variant)
+            self.assertIn("barCode", variant)
+            self.assertIn("code", variant)
+            self.assertIn("imagestionCenterCost", variant)
+            self.assertIn("imagestionAccount", variant)
+            self.assertIn("imagestionConceptCod", variant)
+            self.assertIn("imagestionProyectCod", variant)
+            self.assertIn("imagestionCategoryCod", variant)
+            self.assertIn("imagestionProductId", variant)
+            self.assertIn("serialNumber", variant)
+            self.assertIn("prestashopCombinationId", variant)
+            self.assertIn("prestashopValueId", variant)
+            self.assertIn("product", variant)
