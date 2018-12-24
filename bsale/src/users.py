@@ -2,8 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 
-from constants import Endpoints
-from endpoint import Endpoint
+from .constants import Endpoints
+from .endpoint import Endpoint
 
 
 class Users(Endpoint):

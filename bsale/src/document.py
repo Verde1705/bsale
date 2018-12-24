@@ -3,8 +3,8 @@
 import requests
 import json
 
-from constants import Environment, Endpoints
-from endpoint import Endpoint
+from .constants import Environment, Endpoints
+from .endpoint import Endpoint
 
 
 class Document(Endpoint):

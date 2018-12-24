@@ -1,9 +1,13 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+try:
+    from urllib import urlencode
+except:
+    from urllib.parse import urlencode
+
 import requests
-import urllib
-from constants import Environment
+from .constants import Environment
 from .itoken import iToken
 
 
@@ -60,7 +64,7 @@ class Endpoint(object):
         """ generate url ready arguments
         """
 
-        params = urllib.urlencode(sorted(arguments.items()))
+        params = urlencode(sorted(arguments.items()))
         url = Environment.URL + endpoint + '?' + params
         return url
 

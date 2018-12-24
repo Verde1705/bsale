@@ -3,8 +3,8 @@
 import requests
 import json
 
-from constants import Endpoints, Environment
-from endpoint import Endpoint
+from .constants import Endpoints, Environment
+from .endpoint import Endpoint
 
 
 class Variant(Endpoint):
@@ -136,6 +136,22 @@ class Variant(Endpoint):
         }
 
         r = requests.put(url, data=json.dumps(params), headers=headers)
+
+        return r.json()
+
+    @classmethod
+    def Remove(self, variantId):
+
+        url = Environment.URL + 'variants/' + str(variantId) + '.json'
+        access_token = self.itoken.getToken()
+
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
+
+        r = requests.delete(url, headers=headers)
 
         return r.json()
 

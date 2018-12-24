@@ -1,12 +1,17 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+
+try:
+    from urllib import urlencode
+except:
+    from urllib.parse import urlencode
+
 import requests
 import json
-import urllib
 import inspect
 from .itoken import iToken
-from constants import Environment, Endpoints
-from endpoint import Endpoint
+from .constants import Environment, Endpoints
+from .endpoint import Endpoint
 
 
 class Product(Endpoint):
@@ -66,7 +71,7 @@ class Product(Endpoint):
                     arguments[x] = values[x]
 
         # concatena dic en limit=10&offset=0 por ejemplo
-        params = urllib.urlencode(sorted(arguments.items()))
+        params = urlencode(sorted(arguments.items()))
 
         url = Environment.URL + 'products.json?' + params
         access_token = self.itoken.getToken()
