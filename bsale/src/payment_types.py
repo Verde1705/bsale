@@ -20,8 +20,7 @@ class PaymentTypes(Endpoint):
         ledgeraccount=None,
         state=None
     ):
-        """
-        Get all the payment types from bsale account
+        """ Get all the payment types from bsale account
 
         Args:
             limit         (int)  : limita la cantidad de items de una
@@ -56,11 +55,10 @@ class PaymentTypes(Endpoint):
 
     @classmethod
     def GetOne(self, payment_type_id):
-        """
-        Get One of the payment types from bsale account
+        """ Get One of the payment types from bsale account
 
         Args:
-            payment_type_id         (int)  : payment type identificator
+            payment_type_id (int) : payment type identificator
 
         Returns:
             (dict) Dictionary with the JSON representation of response
@@ -72,8 +70,8 @@ class PaymentTypes(Endpoint):
 
     @classmethod
     def Count(self):
-        """
-        Count all the payment types on a bsale account
+        """ Count all the payment types on a bsale account
+
         Returns:
             (dict) Dictionary with the JSON representation of response
         """
@@ -86,8 +84,8 @@ class PaymentTypes(Endpoint):
         self,
         payment_type_id
     ):
-        """
-        Get all dynamic atrributes on a payment type
+        """ Get all dynamic atrributes on a payment type
+
         Returns:
             (dict) Dictionary with the JSON representation of response
         """
@@ -107,8 +105,8 @@ class PaymentTypes(Endpoint):
         ledgerAccount=None,
         ledgerCode=None
     ):
-        """
-        POST a new payment type on a bsale account
+        """ POST a new payment type on a bsale account
+
         Args:
             name          (str): nombre de la forma de pago
             isCash        (int): indica si la forma de pago es efectivo,
@@ -120,6 +118,7 @@ class PaymentTypes(Endpoint):
                                  No(0) o Si (1)
             ledgerAccount (str): indica la cuenta contable de la forma de pago
             ledgerCode    (str): indica el código contable de la forma de pago
+
         Returns:
             (dict) Dictionary with the JSON representation of response
         """
