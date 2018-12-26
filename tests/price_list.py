@@ -13,7 +13,7 @@ from tests.mock import mock_api_bsale
 class PriceListTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.access_token = '1ce1716348e93fb05fd8be580999e9c3667027c1'
+        self.access_token = 'access_token'
         self.client = bsale.API(self.access_token)
         self.price_list_id = 1
         self.detail_id = 1

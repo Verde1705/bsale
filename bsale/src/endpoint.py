@@ -26,8 +26,7 @@ class Endpoint(object):
 
     @classmethod
     def get(self, endpoint, **args):
-        """ perform a get to a given endpoint
-        """
+        """ Perform a get to a given endpoint """
 
         instance = self.instance()
         arguments = instance.get_arguments(**args)

@@ -35,3 +35,8 @@ class Endpoints(object):
     PRICE_LIST_ID_DETAILS = "price_lists/{}/details.json"
     PRICE_LIST_ID_DETAILS_ID = "price_lists/{}/details/{}.json"
     COUNT_PRICE_LIST = "price_lists/count.json"
+
+    PAYMENT_TYPES = "payment_types.json"
+    PAYMENT_TYPES_ID = "payment_types/{}.json"
+    COUNT_PAYMENT_TYPES = "payment_types/count.json"
+    PAYMENT_TYPES_DINAMIC_ATTR = "payment_types/{}/dynamic_attributes.json"

@@ -13,6 +13,7 @@ from .users import UsersTestCase
 from .variant import VariantTestCase
 from .price_list import PriceListTestCase
 from .document_type import DocumentTypeTestCase
+from .payment_types import PaymentTypesTestCase
 
 
 __all__ = [
@@ -25,6 +26,7 @@ __all__ = [
     "VariantTestCase",
     "PriceListTestCase",
     "DocumentTypeTestCase"
+    "PaymentTypesTestCase"
 ]
 
 
