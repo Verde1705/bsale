@@ -2,8 +2,10 @@
 # -*- coding: UTF-8 -*-
 
 import json
-from httmock import urlmatch
 import logging
+
+from bsale.mocks.payment_types import payment_type_mock
+from httmock import urlmatch
 
 
 @urlmatch(netloc=r'(.*\.)?api.bsale.cl$')
@@ -1226,6 +1228,11 @@ def mock_api_bsale(url, request):
                 'limit': 25,
                 'offset': 0}
         }
+
+    result = payment_type_mock(url, request)
+
+    if result != "next":
+        return result
 
     logging.debug("no tiene")
     return {

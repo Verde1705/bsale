@@ -9,7 +9,7 @@ from endpoint import Endpoint
 
 class PaymentTypes(Endpoint):
 
-    @staticmethod
+    @classmethod
     def Get(
         self,
         limit=None,
@@ -54,7 +54,7 @@ class PaymentTypes(Endpoint):
             state=state
         )
 
-    @staticmethod
+    @classmethod
     def GetOne(self, payment_type_id):
         """
         Get One of the payment types from bsale account
@@ -70,7 +70,7 @@ class PaymentTypes(Endpoint):
             Endpoints.PAYMENT_TYPES_ID.format(payment_type_id)
         )
 
-    @staticmethod
+    @classmethod
     def Count(self):
         """
         Count all the payment types on a bsale account
@@ -81,7 +81,7 @@ class PaymentTypes(Endpoint):
             Endpoints.COUNT_PAYMENT_TYPES,
         )
 
-    @staticmethod
+    @classmethod
     def GetDynamicAttributes(
         self,
         payment_type_id
@@ -93,15 +93,12 @@ class PaymentTypes(Endpoint):
         """
 
         return self.get(
-            Endpoints.PAYMENT_TYPES_DINAMIC_ATTR.format(price_list_id),
-            expand=expand,
-            variantid=variantid,
-            code=code,
-            barcode=barcode
+            Endpoints.PAYMENT_TYPES_DINAMIC_ATTR.format(payment_type_id)
         )
 
-    @staticmethod
+    @classmethod
     def Create(
+        self,
         name,
         isCash=None,
         isCheck=None,
@@ -127,7 +124,7 @@ class PaymentTypes(Endpoint):
             (dict) Dictionary with the JSON representation of response
         """
 
-        url = Endpoints.PAYMENT_TYPES
+        url = Environment.URL + Endpoints.PAYMENT_TYPES
         access_token = self.itoken.getToken()
 
         headers = {
