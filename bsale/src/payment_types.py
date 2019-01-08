@@ -3,8 +3,8 @@
 import requests
 import json
 
-from constants import Endpoints, Environment
-from endpoint import Endpoint
+from .constants import Endpoints, Environment
+from .endpoint import Endpoint
 
 
 class PaymentTypes(Endpoint):
