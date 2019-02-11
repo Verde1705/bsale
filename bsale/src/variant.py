@@ -181,9 +181,8 @@ class Variant(Endpoint):
             'access_token': access_token
         }
         params = {
-            'office_id': office_id
+            'officeid': office_id
         }
-
         r = requests.get(url, headers=headers, params=params)
 
         return r.json()
