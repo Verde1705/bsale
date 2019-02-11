@@ -169,3 +169,21 @@ class Variant(Endpoint):
             Endpoints.COUNT_VARIANTS,
             state=state
         )
+
+    @classmethod
+    def GetSerialStock(self, variant_id, office_id):
+        url = Environment.URL + 'variants/' + str(variantId) + '/serials.json'
+        access_token = self.itoken.getToken()
+
+        headers = {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'access_token': access_token
+        }
+        params = {
+            'office_id': office_id
+        }
+
+        r = requests.get(url, headers=headers, params=params)
+
+        return r.json()
