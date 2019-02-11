@@ -62,3 +62,26 @@ class VariantTestCase(unittest.TestCase):
             self.assertIn("prestashopCombinationId", variant)
             self.assertIn("prestashopValueId", variant)
             self.assertIn("product", variant)
+
+    def test_GetSerialStock(self):
+        self.variant = bsale.Variant()
+
+        def mock_get_serial_stock(variant_id, office_id):
+            return {
+                "id": str(variant_id),
+                "count": 1,
+                "items": [
+                    {
+                        "stockAvailable": 20,
+                        "serialNumber": "serial number"
+                    }
+                ]
+            }
+        self.variant.GetSerialStock = mock_get_serial_stock
+
+        result = self.variant.GetSerialStock(variant_id=-1, office_id=-1)
+        self.assertIn("count", result)
+        self.assertIn("id", result)
+        self.assertIn("items", result)
+        self.assertIn("stockAvailable", result["items"][0])
+        self.assertIn("serialNumber", result["items"][0])
