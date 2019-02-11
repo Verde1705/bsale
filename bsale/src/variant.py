@@ -183,7 +183,6 @@ class Variant(Endpoint):
         params = {
             'officeid': office_id
         }
-        print url
         r = requests.get(url, headers=headers, params=params)
 
         return r.json()
