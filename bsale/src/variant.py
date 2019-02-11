@@ -172,7 +172,7 @@ class Variant(Endpoint):
 
     @classmethod
     def GetSerialStock(self, variant_id, office_id):
-        url = Environment.URL + 'variants/' + str(variantId) + '/serials.json'
+        url = Environment.URL + 'variants/' + str(variant_id) + '/serials.json'
         access_token = self.itoken.getToken()
 
         headers = {
