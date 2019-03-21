@@ -13,6 +13,7 @@ from .itoken import iToken
 from .price_list import PriceList
 from .document_type import DocumentType
 from .payment_types import PaymentTypes
+from .returns import Returns
 
 
 class BsaleApiCLient(iToken):
@@ -49,6 +50,7 @@ class BsaleApiCLient(iToken):
         self.PriceList = PriceList(self)
         self.DocumentType = DocumentType(self)
         self.PaymentTypes = PaymentTypes(self)
+        self.Returns = Returns(self)
 
     # itoken implementation
     def getToken(self):
