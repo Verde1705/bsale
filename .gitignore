@@ -60,3 +60,4 @@ target/
 
 venv/
 venv2/
+.vscode/
