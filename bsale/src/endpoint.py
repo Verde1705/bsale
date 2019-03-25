@@ -53,7 +53,7 @@ class Endpoint(object):
         """
         arguments = dict()
 
-        for key, value in args.items():
+        for key, value in list(args.items()):
             if value is not None:
                 arguments[key] = value
 
