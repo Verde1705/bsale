@@ -23,7 +23,7 @@ class PriceListTestCase(unittest.TestCase):
         with HTTMock(mock_api_bsale):
             price_list = self.client.PriceList.Get()
 
-        self.assertEquals(price_list['count'], 1)
+        self.assertEqual(price_list['count'], 1)
         self.assertEqual(price_list['items'][0]['state'], 0)
         self.assertEqual(price_list['items'][0]['name'], 'Lista Base')
 
@@ -44,7 +44,7 @@ class PriceListTestCase(unittest.TestCase):
             price_list = self.client.PriceList.GetDetail(
                 self.price_list_id, self.detail_id)
 
-        self.assertEquals(price_list['count'], 1)
+        self.assertEqual(price_list['count'], 1)
         self.assertEqual(price_list['items'][0]['variant']['id'], '1')
 
     def test_GetOneDetail(self):
@@ -52,7 +52,7 @@ class PriceListTestCase(unittest.TestCase):
             price_list = self.client.PriceList.GetOneDetail(
                 self.price_list_id, self.detail_id)
 
-        self.assertEquals(price_list['id'], 1)
+        self.assertEqual(price_list['id'], 1)
         self.assertEqual(price_list['variantValue'], 1000)
 
     def test_UpdateDetail(self):
@@ -60,5 +60,5 @@ class PriceListTestCase(unittest.TestCase):
             price_list = self.client.PriceList.UpdateDetail(
                 self.price_list_id, self.detail_id, self.price)
 
-        self.assertEquals(price_list['id'], self.detail_id)
-        self.assertEquals(price_list['variantValue'], self.price)
+        self.assertEqual(price_list['id'], self.detail_id)
+        self.assertEqual(price_list['variantValue'], self.price)
