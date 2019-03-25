@@ -24,7 +24,7 @@ class DocumentTypeTestCase(unittest.TestCase):
             self.document_type = bsale.DocumentType()
             request = self.document_type.getOne(self.document_id)
 
-        self.assertEquals(request["id"], self.document_id)
+        self.assertEqual(request["id"], self.document_id)
         self.assertTrue(request["name"], "NOTA VENTA")
 
     def test_count(self):

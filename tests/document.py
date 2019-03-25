@@ -28,7 +28,7 @@ class DocumentTestCase(unittest.TestCase):
 
             id_document = 10829
             seller = self.document.GetDocumentSeller(id_document)['items'][0]
-            self.assertEquals(seller["id"], 2)
+            self.assertEqual(seller["id"], 2)
 
     def test_update_state_sii(self):
         with HTTMock(mock_api_bsale):
