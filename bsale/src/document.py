@@ -208,10 +208,10 @@ class Document(Endpoint):
 
     @classmethod
     def DeleteDocument(self, idDocument, officeid):
-        # GET /v1/documents/12644/details.json
+        # DELETE /v1/documents/[idDocument].json?officeid=[office_id]
 
         url = Environment.URL + 'documents/' + str(idDocument) \
-            + '.json?officeid=' + str(officeid)
+            + '.json?officeId=' + str(officeid)
         access_token = self.itoken.getToken()
 
         headers = {
@@ -219,10 +219,8 @@ class Document(Endpoint):
             'Accept': 'application/json',
             'access_token': access_token
         }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        r = requests.delete(url, headers=headers)
+        return r
 
     @classmethod
     def CreateCreditNote(self, params):
