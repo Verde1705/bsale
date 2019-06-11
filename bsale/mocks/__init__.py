@@ -1229,6 +1229,28 @@ def mock_api_bsale(url, request):
                 'offset': 0}
         }
 
+    if url.path == "/v1/offices/{office_id}.json".format(office_id=1):
+        return {
+            "status_code": 200,
+            "content": {
+                "href": "https://api.bsale.cl/v1/offices/1.json",
+                "id": 1,
+                "name": "Fabrica Web",
+                "description": "",
+                "address": "Santa Elena 1328",
+                "latitude": "",
+                "longitude": "",
+                "isVirtual": 0,
+                "country": "Chile",
+                "municipality": "Santiago",
+                "city": "Santiago",
+                "zipCode": "",
+                "costCenter": "",
+                "state": 0,
+                "imagestionCellarId": 0
+            }
+        }
+
     result = payment_type_mock(url, request)
 
     if result != "next":
@@ -1238,6 +1260,6 @@ def mock_api_bsale(url, request):
     return {
         'status_code': 500,
         'content': {
-            {'message': 'mock not found'}
+            'message': 'mock not found'
         }
     }
