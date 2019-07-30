@@ -10,5 +10,10 @@ setup(
     author='Estefany Campos',
     author_email='estefany@loadingplay.com',
     url='https://www.loadingplay.com/',
-    packages=['bsale', 'bsale.src', 'bsale.mocks']
+    packages=['bsale', 'bsale.src', 'bsale.mocks'],
+    install_requires=[
+        "requests",
+        "python-http-client",
+        "httmock"
+    ],
 )

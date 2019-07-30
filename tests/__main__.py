@@ -14,7 +14,11 @@ from .variant import VariantTestCase
 from .price_list import PriceListTestCase
 from .document_type import DocumentTypeTestCase
 from .payment_types import PaymentTypesTestCase
+<<<<<<< HEAD
 from .offices import OfficesTestCase
+=======
+from .payment import PaymentTestCase
+>>>>>>> add paymet
 
 
 __all__ = [
@@ -26,9 +30,15 @@ __all__ = [
     "APITestCase",
     "VariantTestCase",
     "PriceListTestCase",
+<<<<<<< HEAD
     "DocumentTypeTestCase"
     "PaymentTypesTestCase",
     "OfficesTestCase"
+=======
+    "DocumentTypeTestCase",
+    "PaymentTypesTestCase",
+    "PaymentTestCase"
+>>>>>>> add paymet
 ]
 
 
