@@ -12,6 +12,8 @@ class PaymentTestCase(unittest.TestCase):
         self.access_token = 'access_token'
         self.client = bsale.API(self.access_token)
         self.payment_id = 1
+        self.original_func_get = requests.get
+        self.original_func_post = requests.post
 
     def test_Get(self):
         body = {
@@ -226,3 +228,7 @@ class PaymentTestCase(unittest.TestCase):
         self.assertIn("document", result)
         self.assertIn("office", result)
         self.assertIn("user", result)
+
+    def tearDown(self):
+        requests.get = self.original_func_get
+        requests.post = self.original_func_post
