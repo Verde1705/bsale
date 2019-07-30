@@ -41,6 +41,11 @@ class Endpoints(object):
     COUNT_PAYMENT_TYPES = "payment_types/count.json"
     PAYMENT_TYPES_DINAMIC_ATTR = "payment_types/{}/dynamic_attributes.json"
 
+    PAYMENTS = "payments.json"
+    PAYMENTS_ID = "payments/{}.json"
+    PAYMENTS_BY_PAYMENT_TYPE = "payments/group_payment_types.json"
+    COUNT_PAYMENTS = "payments/count.json"
+
     RETURNS = "returns.json"
 
     OFFICES_ID = "offices/{}.json"

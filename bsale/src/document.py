@@ -77,7 +77,7 @@ class Document(Endpoint):
         )
 
     @classmethod
-    def GetOneDocument(self, idDocument):
+    def GetOneDocument(self, idDocument, expand=None):
         # GET /v1/documents/421.json retorna un documento específico.
         # Parametros
 
@@ -85,7 +85,9 @@ class Document(Endpoint):
         # Ejemplos
 
         # GET /v1/documents/421.json?expand=[document_type,office]
-        return self.get(Endpoints.DOCUMENT_ID.format(idDocument))
+        return self.get(
+            Endpoints.DOCUMENT_ID.format(idDocument),
+            expand=expand)
 
     @classmethod
     def GetDetailDocument(self, idDocument):

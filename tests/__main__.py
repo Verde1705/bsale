@@ -15,6 +15,7 @@ from .price_list import PriceListTestCase
 from .document_type import DocumentTypeTestCase
 from .payment_types import PaymentTypesTestCase
 from .offices import OfficesTestCase
+from .payment import PaymentTestCase
 
 
 __all__ = [
@@ -29,6 +30,9 @@ __all__ = [
     "DocumentTypeTestCase"
     "PaymentTypesTestCase",
     "OfficesTestCase"
+    "DocumentTypeTestCase",
+    "PaymentTypesTestCase",
+    "PaymentTestCase"
 ]
 
 
