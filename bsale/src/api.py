@@ -13,12 +13,12 @@ from .itoken import iToken
 from .price_list import PriceList
 from .document_type import DocumentType
 from .payment_types import PaymentTypes
+from .payment import Payment
 from .returns import Returns
 from .offices import Offices
 
 
 class BsaleApiCLient(iToken):
-    # return "hola"
     @property
     def token(self):
         return self._token
@@ -51,6 +51,7 @@ class BsaleApiCLient(iToken):
         self.PriceList = PriceList(self)
         self.DocumentType = DocumentType(self)
         self.PaymentTypes = PaymentTypes(self)
+        self.Payment = Payment(self)
         self.Returns = Returns(self)
         self.Offices = Offices(self)
 
