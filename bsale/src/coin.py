@@ -18,7 +18,7 @@ class Coin(Endpoint):
         expand=None,
         name=None,
         symbol=None,
-        state=None
+        state=None,
         default=None
     ):
         """ Get all the coins from bsale account
@@ -54,9 +54,9 @@ class Coin(Endpoint):
             offset=offset,
             fields=fields,
             expand=expand,
-            name=recorddate,
-            symbol=documentid,
-            state=state
+            name=name,
+            symbol=symbol,
+            state=state,
             default=default
         )
 
@@ -91,7 +91,7 @@ class Coin(Endpoint):
         """
 
         return self.get(
-            Endpoints.COIN_EXCANGE_RATE.format(coind_id, timestamp)
+            Endpoints.COIN_EXCANGE_RATE.format(coin_id, timestamp)
         )
 
     @classmethod

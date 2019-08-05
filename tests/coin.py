@@ -12,7 +12,7 @@ class CoinTestCase(unittest.TestCase):
     def setUp(self):
         self.access_token = 'access_token'
         self.client = bsale.API(self.access_token)
-        self.payment_id = 1
+        self.coin_id = 1
         self.original_func_get = requests.get
         self.original_func_post = requests.post
 
@@ -62,7 +62,7 @@ class CoinTestCase(unittest.TestCase):
             method='GET',
             body=body))
 
-        result = self.client.Payment.GetOne(payment_id=self.payment_id)
+        result = self.client.Payment.GetOne(payment_id=self.coin_id)
         self.assertIn("href", result)
         self.assertIn("id", result)
         self.assertIn("name", result)
@@ -81,7 +81,7 @@ class CoinTestCase(unittest.TestCase):
             method='GET',
             body=body))
 
-        result = self.client.Coin.GetOne(
+        result = self.client.Coin.GetExchangeRate(
             coin_id=self.coin_id, timestamp=datetime.timestamp(datetime.now()))
         self.assertIn("exchangeRate", result)
 
