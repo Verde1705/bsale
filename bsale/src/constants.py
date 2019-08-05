@@ -49,3 +49,8 @@ class Endpoints(object):
     RETURNS = "returns.json"
 
     OFFICES_ID = "offices/{}.json"
+
+    COINS = "/coins.json"
+    COIN_ID = "/coins/{}.json"
+    COIN_EXCANGE_RATE = "/coin/exchange_rate/{}.json"
+    COUNT_COIN = "/coins/count.json"

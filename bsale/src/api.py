@@ -16,6 +16,7 @@ from .payment_types import PaymentTypes
 from .payment import Payment
 from .returns import Returns
 from .offices import Offices
+from .coin import Coin
 
 
 class BsaleApiCLient(iToken):
@@ -54,6 +55,7 @@ class BsaleApiCLient(iToken):
         self.Payment = Payment(self)
         self.Returns = Returns(self)
         self.Offices = Offices(self)
+        self.Coin = Coin(self)
 
     # itoken implementation
     def getToken(self):
