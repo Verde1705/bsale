@@ -43,7 +43,50 @@ class Returns(Endpoint):
 
     """
 
-    def Create(self, params):
+    def get(self, params):
+        """
+        GET lista de devoluciones en bsale
+            Args:
+                limit                    (int)   : limita la cantidad de items
+                                                 de una respuesta JSON, por
+                                                 defecto el limit es 25,
+                                                 el maximo permitido es 50.
+                offset                   (int)   : permite paginar los items de
+                                                 una respuesta JSON, por
+                                                 defecto el offset es 0.
+                fields                   (list) : solicita lista atributos
+                                                 de un recurso]
+                expand                   (list) : permite expandir instancias
+                                                 y colecciones.
+                returndate               (str)  :Permite filtrar por 
+                                                fecha de devolución.
+                code                     (str)  : filtra por código de la
+                                                devolución.
+
+                type                     (str)  : filtra por tipo de
+                                                devolución.
+                officeid                 (int)  : Permite filtrar por sucursal.
+                referencedocumentid      (int)  : filtra por documento de
+                                                referencia.
+                creditnoteid             (str)  : filtra por el id de
+                                                la nota de crédito
+
+        """
+        self.get(
+            Endpoints.RETURNS,
+            limit=limit,
+            offset=offset,
+            fields=fields,
+            expand=expand,
+            returndate=returndate,
+            code=code,
+            type=type,
+            officeid=officeid,
+            referencedocumentid=referencedocumentid,
+            creditnoteid=creditnoteid
+        )
+
+    def create(self, params):
         """
         {
             "documentTypeId": 9,
