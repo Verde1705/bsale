@@ -59,29 +59,29 @@ class Returns(Endpoint):
         """
         GET lista de devoluciones en bsale
             Args:
-                limit                    (int)   : limita la cantidad de items
-                                                 de una respuesta JSON, por
-                                                 defecto el limit es 25,
-                                                 el maximo permitido es 50.
-                offset                   (int)   : permite paginar los items de
-                                                 una respuesta JSON, por
-                                                 defecto el offset es 0.
-                fields                   (list) : solicita lista atributos
-                                                 de un recurso]
-                expand                   (list) : permite expandir instancias
-                                                 y colecciones.
-                returndate               (str)  :Permite filtrar por 
-                                                fecha de devolución.
-                code                     (str)  : filtra por código de la
-                                                devolución.
+                limit                (int)   : limita la cantidad de items
+                                            de una respuesta JSON, por
+                                            defecto el limit es 25,
+                                            el maximo permitido es 50.
+                offset               (int)   : permite paginar los items de
+                                            una respuesta JSON, por
+                                            defecto el offset es 0.
+                fields               (list) : solicita lista atributos
+                                            de un recurso]
+                expand               (list) : permite expandir instancias
+                                            y colecciones.
+                returndate           (str)  :Permite filtrar por 
+                                            fecha de devolución.
+                code                 (str)  : filtra por código de la
+                                            devolución.
 
-                type                     (str)  : filtra por tipo de
-                                                devolución.
-                officeid                 (int)  : Permite filtrar por sucursal.
-                referencedocumentid      (int)  : filtra por documento de
-                                                referencia.
-                creditnoteid             (str)  : filtra por el id de
-                                                la nota de crédito
+                type                 (str)  : filtra por tipo de
+                                            devolución.
+                officeid             (int)  : Permite filtrar por sucursal.
+                referencedocumentid  (int)  : filtra por documento de
+                                            referencia.
+                creditnoteid         (str)  : filtra por el id de
+                                            la nota de crédito
 
         """
         return self.get(
