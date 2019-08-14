@@ -43,7 +43,19 @@ class Returns(Endpoint):
 
     """
 
-    def get(self, params):
+    def Get(
+        self,
+        limit=None,
+        offset=None,
+        fields=None,
+        expand=None,
+        returndate=None,
+        code=None,
+        type=None,
+        officeid=None,
+        referencedocumentid=None,
+        creditnoteid=None
+    ):
         """
         GET lista de devoluciones en bsale
             Args:
@@ -72,7 +84,7 @@ class Returns(Endpoint):
                                                 la nota de crédito
 
         """
-        self.get(
+        return self.get(
             Endpoints.RETURNS,
             limit=limit,
             offset=offset,
@@ -85,46 +97,3 @@ class Returns(Endpoint):
             referencedocumentid=referencedocumentid,
             creditnoteid=creditnoteid
         )
-
-    def create(self, params):
-        """
-        {
-            "documentTypeId": 9,
-            "officeId": 1,
-            "referenceDocumentId": 11528,
-            "expirationDate": 1407384000,
-            "emissionDate": 1407384000,
-            "motive": "prueba api",
-            "declareSii": 1,
-            "priceAdjustment": 0,
-            "editTexts": 0,
-            "type": 1,
-            "client": {
-                "code": "1-9",
-                "city": "Puerto Varas",
-                "municipality": "comuna",
-                "activity": "giro",
-                "address": "direccion"
-            },
-            "details": [
-                {
-                    "documentDetailId": 21493,
-                    "quantity": 1,
-                    "unitValue": 0
-                }
-            ]
-        }
-        """
-
-        url = Environment.URL + Endpoints.RETURNS
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
