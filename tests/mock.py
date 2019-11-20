@@ -38,12 +38,12 @@ def mock_api_bsale(url, request):
                 'product_taxes': {
                     'href': "https://api.bsale.cl/v1/products"
                             "/2334/product_taxes.json"
-                    },
+                },
                 'costCenter': '',
                 'product_type': {
                     'href': 'https://api.bsale.cl/v1/product_types/1.json',
                     'id': '1'
-                    },
+                },
                 'presashopAttributeId': 0,
                 'prestashopProductId': 0,
                 'id': 2334,
@@ -76,6 +76,51 @@ def mock_api_bsale(url, request):
                 'href': 'https://api.bsale.cl/v1/stocks.json',
                 'limit': 1,
                 'offset': 0
+            }
+        }
+
+    if url.path == '/v1/stocks/receptions/1.json':
+        return {
+            'status_code': 200,
+            "content": {
+                "href": "https://api.bsale.cl/v1/stocks/receptions/1.json",
+                "id": 1,
+                "admissionDate": 1371182400,
+                "document": "Guía",
+                "documentNumber": 1,
+                "note": "Frival",
+                "imagestionCctId": 0,
+                "imagestionCcDescription": "",
+                "internalDispatchId": 0,
+                "office": {
+                    "href": "https://api.bsale.cl/v1/offices/1.json",
+                    "id": "1"
+                },
+                "details": {
+                    "href": "https://api.bsale.cl/v1/stocks/receptions/1"
+                    "/details.json"
+                }
+            }
+        }
+
+    if url.path == '/v1/stocks/consumptions/1.json':
+        return {
+            "status_code": 200,
+            "content": {
+                "href": "https://api.bsale.cl/v1/stocks/consumptions/1.json",
+                "id": 1,
+                "consumptionDate": 1371441600,
+                "note": "traslado a los angeles",
+                "imagestionCcdescription": "",
+                "imagestionCenterCostId": 0,
+                "office": {
+                    "href": "https://api.bsale.cl/v1/offices/1.json",
+                    "id": "1"
+                },
+                "details": {
+                    "href": "https://api.bsale.cl/v1/stocks/consumptions/"
+                    "1/details.json"
+                }
             }
         }
 
@@ -165,83 +210,83 @@ def mock_api_bsale(url, request):
         return {
             'status_code': 200,
             'content': {
-                    'office': {
-                        'href': 'https://api.bsale.cl/v1/offices/31.json',
-                        'id': '31'
-                    },
-                    'commissionTotalAmount': 0.0,
-                    'municipality': 'comuna',
-                    'number': 123124725,
-                    'exportTaxAmount': 0.0,
-                    'href': 'https://api.bsale.cl/v1/documents/10829.json',
-                    'references': {
+                'office': {
+                    'href': 'https://api.bsale.cl/v1/offices/31.json',
+                    'id': '31'
+                },
+                'commissionTotalAmount': 0.0,
+                'municipality': 'comuna',
+                'number': 123124725,
+                'exportTaxAmount': 0.0,
+                'href': 'https://api.bsale.cl/v1/documents/10829.json',
+                'references': {
                         'href': "https://api.bsale.cl/v1/documents/"
                                 "10829/references.json"
-                    },
-                    'exportExemptAmount': 0.0,
-                    'purchaseTotalAmount': 0.0,
-                    'urlXml': None,
-                    'netAmount': 53975.0,
-                    'exportTotalAmount': 0.0,
-                    'city': 'Puerto Varas',
-                    'coin': {
+                },
+                'exportExemptAmount': 0.0,
+                'purchaseTotalAmount': 0.0,
+                'urlXml': None,
+                'netAmount': 53975.0,
+                'exportTotalAmount': 0.0,
+                'city': 'Puerto Varas',
+                'coin': {
                         'href': 'https://api.bsale.cl/v1/coins/1.json',
                         'id': '1'
-                    },
-                    'urlPdf': "http://app2.bsale.cl/view/"
-                              "2/512e36d08f44.pdf?sfd=99",
-                    'urlPdfOriginal': "http://app2.bsale.cl/view/"
-                                      "2/512e36d08f44.pdf",
-                    'id': 10829,
-                    'state': 0,
-                    'details': {
-                        'href': "https://api.bsale.cl/v1/documents/"
-                                "10829/details.json"
-                    },
-                    'purchaseTaxAmount': 0.0,
-                    'urlPublicView': "http://app2.bsale.cl/view/"
-                                     "2/512e36d08f44?sfd=99",
-                    'percentageTaxWithheld': 0.0,
-                    'totalAmount': 64230.0,
-                    'exportNetAmount': 0.0,
-                    'ted': None,
-                    'sellers': {
-                        'href': "https://api.bsale.cl/v1/documents/"
-                                "10829/sellers.json"
-                    },
-                    'document_taxes': {
-                        'href': "https://api.bsale.cl/v1/documents/"
-                                "10829/document_taxes.json"
-                    },
-                    'urlTimbre': None,
-                    'user': {
-                        'href': "https://api.bsale.cl/v1/users/194.json",
-                        'id': '194'
-                    },
-                    'address': 'direccion',
-                    'document_type': {
-                        'href': "https://api.bsale.cl/v1/"
-                                "document_types/1.json",
-                        'id': '1'
-                    },
-                    'informedSii': 1,
-                    'taxAmount': 10255.0,
-                    'urlPublicViewOriginal': "http://app2.bsale.cl/view/"
-                                             "2/512e36d08f44",
-                    'responseMsgSii': None,
-                    'generationDate': 1462821448,
-                    'commissionRate': 0.0,
-                    'exemptAmount': 0.0,
-                    'token': '512e36d08f44',
-                    'client': {
-                        'href': "https://api.bsale.cl/v1/clients/19.json",
-                        'id': '19'
-                    },
-                    'emissionDate': 1407715200,
-                    'commissionNetAmount': 0.0,
-                    'commissionTaxAmount': 0.0,
-                    'expirationDate': 1407715200
-                }
+                },
+                'urlPdf': "http://app2.bsale.cl/view/"
+                "2/512e36d08f44.pdf?sfd=99",
+                'urlPdfOriginal': "http://app2.bsale.cl/view/"
+                "2/512e36d08f44.pdf",
+                'id': 10829,
+                'state': 0,
+                'details': {
+                    'href': "https://api.bsale.cl/v1/documents/"
+                    "10829/details.json"
+                },
+                'purchaseTaxAmount': 0.0,
+                'urlPublicView': "http://app2.bsale.cl/view/"
+                "2/512e36d08f44?sfd=99",
+                'percentageTaxWithheld': 0.0,
+                'totalAmount': 64230.0,
+                'exportNetAmount': 0.0,
+                'ted': None,
+                'sellers': {
+                    'href': "https://api.bsale.cl/v1/documents/"
+                    "10829/sellers.json"
+                },
+                'document_taxes': {
+                    'href': "https://api.bsale.cl/v1/documents/"
+                    "10829/document_taxes.json"
+                },
+                'urlTimbre': None,
+                'user': {
+                    'href': "https://api.bsale.cl/v1/users/194.json",
+                    'id': '194'
+                },
+                'address': 'direccion',
+                'document_type': {
+                    'href': "https://api.bsale.cl/v1/"
+                    "document_types/1.json",
+                    'id': '1'
+                },
+                'informedSii': 1,
+                'taxAmount': 10255.0,
+                'urlPublicViewOriginal': "http://app2.bsale.cl/view/"
+                "2/512e36d08f44",
+                'responseMsgSii': None,
+                'generationDate': 1462821448,
+                'commissionRate': 0.0,
+                'exemptAmount': 0.0,
+                'token': '512e36d08f44',
+                'client': {
+                    'href': "https://api.bsale.cl/v1/clients/19.json",
+                    'id': '19'
+                },
+                'emissionDate': 1407715200,
+                'commissionNetAmount': 0.0,
+                'commissionTaxAmount': 0.0,
+                'expirationDate': 1407715200
+            }
         }
 
     if url.path == '/v1/documents.json':
@@ -780,15 +825,15 @@ def mock_api_bsale(url, request):
                                     "products/416.json",
                             "id": "416"
                         },
-                        "attribute_values": {
+                    "attribute_values": {
                             "href": "https://api.bsale.cl/v1/variants/"
                                     "1548/attribute_values.json"
-                        },
-                        "costs": {
-                                "href": "https://api.bsale.cl/v1/variants/"
-                                        "1548/costs.json"
-                        }
                     },
+                    "costs": {
+                            "href": "https://api.bsale.cl/v1/variants/"
+                            "1548/costs.json"
+                    }
+                },
                     {
                         "href": "https://api.bsale.cl/v1/variants/1555.json",
                         "id": 1555,
@@ -820,7 +865,7 @@ def mock_api_bsale(url, request):
                             "href": "https://api.bsale.cl/v1/variants/"
                                     "1555/costs.json"
                         }
-                    },
+                },
                     {
                         "href": "https://api.bsale.cl/v1/variants/2101.json",
                         "id": 2101,
@@ -949,7 +994,7 @@ def mock_api_bsale(url, request):
             }
         }
 
-    if url.path ==\
+    if url.path == \
        '/v1/price_lists/{price_lists_id}/details.json'.format(
            price_lists_id=1):
         return {
@@ -975,7 +1020,7 @@ def mock_api_bsale(url, request):
             }
         }
 
-    if url.path ==\
+    if url.path == \
        '/v1/price_lists/{price_list_id}/details/{detail_id}.json'.format(
            price_list_id=1, detail_id=1) and request.method == 'GET':
         return {
@@ -992,7 +1037,7 @@ def mock_api_bsale(url, request):
             }
         }
 
-    if url.path ==\
+    if url.path == \
        '/v1/price_lists/{price_list_id}/details/{detail_id}.json'.format(
            price_list_id=1, detail_id=1) and request.method == 'PUT':
         return {
@@ -1044,7 +1089,7 @@ def mock_api_bsale(url, request):
                                     "book_types/1.json",
                             "id": "1"
                         }
-                    },
+                },
                     {
                         "href": "https://api.bsale.cl/v1/"
                                 "document_types/3.json",
@@ -1073,7 +1118,7 @@ def mock_api_bsale(url, request):
                                     "book_types/1.json",
                             "id": "1"
                         }
-                    },
+                },
                     {
                         "href": "https://api.bsale.cl/v1/"
                                 "document_types/1.json",
@@ -1097,7 +1142,7 @@ def mock_api_bsale(url, request):
                         "ledgerAccount": None,
                         "ipadPrint": 0,
                         "ipadPrintHigh": "0"
-                    }
+                }
                 ]
             }
         }
