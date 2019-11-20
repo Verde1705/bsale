@@ -11,10 +11,11 @@ import json
 import inspect
 
 from .itoken import iToken
-from .constants import Environment
+from .constants import Endpoints, Environment
+from .endpoint import Endpoint
 
 
-class Stock():
+class Stock(Endpoint):
 
     itoken = ""
 
@@ -135,3 +136,44 @@ class Stock():
         r = requests.post(url, data=json.dumps(params), headers=headers)
 
         return r.json()
+
+    @classmethod
+    def GetOneReception(
+        self,
+        id,
+        expand=None
+
+    ):
+        """ Get one reception by id from bsale account
+
+        Args:
+            id          (int)  : identificador unico de la recepcion
+            expand      (list) : permite expandir instancias y
+                                 colecciones.
+
+        Returns:
+            (dict) Dictionary with the JSON representation of response
+        """
+
+        return self.get(
+            Endpoints.STOCK_RECEPTIONS_ID.format(id),
+            expand=expand,
+        )
+
+    @classmethod
+    def GetOneConsumption(self, id, expand=None):
+        """ Get one consumption by id from bsale account
+
+        Args:
+            id          (int)  : identificador unico de la recepcion
+            expand      (list) : permite expandir instancias y
+                                 colecciones.
+
+        Returns:
+            (dict) Dictionary with the JSON representation of response
+        """
+
+        return self.get(
+            Endpoints.STOCK_CONSUMPTIONS_ID.format(id),
+            expand=expand,
+        )
