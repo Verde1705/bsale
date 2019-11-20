@@ -144,7 +144,7 @@ class Stock(Endpoint):
         expand=None
 
     ):
-        """ Get all the payment types from bsale account
+        """ Get one reception by id from bsale account
 
         Args:
             id          (int)  : identificador unico de la recepcion
@@ -162,7 +162,7 @@ class Stock(Endpoint):
 
     @classmethod
     def GetOneConsumption(self, id, expand=None):
-        """ Get all the payment types from bsale account
+        """ Get one consumption by id from bsale account
 
         Args:
             id          (int)  : identificador unico de la recepcion
