@@ -26,6 +26,7 @@ class Document(Endpoint):
             officeid=None,
             saleconditionid=None,
             informedsii=None,
+            referencenumber=None,
             state=0):
 
         # GET /v1/documents.json retorna todos los documentos.
@@ -73,6 +74,7 @@ class Document(Endpoint):
             officeid=officeid,
             saleconditionid=saleconditionid,
             informedsii=informedsii,
+            referencenumber=referencenumber,
             state=state
         )
 
