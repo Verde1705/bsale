@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import datetime
 from .clients import Clients
 from .document import Document
 from .product import Product

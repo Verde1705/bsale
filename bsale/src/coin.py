@@ -1,14 +1,12 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import requests
-import json
-
-from .constants import Environment, Endpoints
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
 class Coin(Endpoint):
+
     @classmethod
     def Get(
         self,
