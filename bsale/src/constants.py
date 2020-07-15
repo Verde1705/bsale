@@ -56,6 +56,9 @@ class Endpoints(object):
 
     RETURNS = "returns.json"
 
+    SHIPPINGS = "shippings.json"
+    SHIPPING_ID = "shippings/{}.json"
+
     OFFICES_ID = "offices/{}.json"
 
     COINS = "coins.json"
