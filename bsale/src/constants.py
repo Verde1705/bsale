@@ -26,6 +26,8 @@ class Endpoints(object):
     DOCUMENT_TYPES_CAF = "document_types/caf.json"
     DOCUMENT_TYPES_NUMBER_AVAILBLES = "document_types/number_availables.json"
 
+    DOCUMENT_SET_SII_STATE = "documents/set_sii_state.json"
+
     USERS = "users.json"
     USERS_SALES_SUMMARY = "users/sales_summary.json"
 
