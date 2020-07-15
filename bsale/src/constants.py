@@ -66,5 +66,11 @@ class Endpoints(object):
     COIN_EXCANGE_RATE = "coins/{}/exchange_rate/{}.json"
     COUNT_COIN = "coins/count.json"
 
+    STOCKS = "stocks.json"
+    STOCKS_ID = "stocks/{}.json"
+
+    STOCK_RECEPTIONS = "stocks/receptions.json"
     STOCK_RECEPTIONS_ID = "stocks/receptions/{}.json"
+
+    STOCK_CONSUMPTIONS = "stocks/consumptions.json"
     STOCK_CONSUMPTIONS_ID = "stocks/consumptions/{}.json"
