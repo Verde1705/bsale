@@ -12,6 +12,9 @@ class Endpoints(object):
     """structure contianing all the existing endpoints"""
     COUNT_PRODUCTS = "products/count.json"
 
+    CLIENTS = "clients.json"
+    CLIENT_ID = "clients/{}.json"
+
     DOCUMENTS = "documents.json"
     DOCUMENT_ID = "documents/{}.json"
     DOCUMENT_ID_DETAILS = "documents/{}/details.json"
