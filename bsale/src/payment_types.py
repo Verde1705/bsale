@@ -1,9 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import requests
-import json
-
-from .constants import Endpoints, Environment
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
@@ -123,14 +120,6 @@ class PaymentTypes(Endpoint):
             (dict) Dictionary with the JSON representation of response
         """
 
-        url = Environment.URL + Endpoints.PAYMENT_TYPES
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
         params = {
             "name": name,
             "isCash": isCash,
@@ -142,6 +131,4 @@ class PaymentTypes(Endpoint):
 
         }
 
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
+        return self.post(Endpoints.PAYMENT_TYPES, params)
