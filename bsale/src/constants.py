@@ -51,6 +51,9 @@ class Endpoints(object):
     PAYMENTS_BY_PAYMENT_TYPE = "payments/group_payment_types.json"
     COUNT_PAYMENTS = "payments/count.json"
 
+    PRODUCTS = "products.json"
+    PRODUCT_ID = "products/{}.json"
+
     RETURNS = "returns.json"
 
     OFFICES_ID = "offices/{}.json"

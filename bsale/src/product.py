@@ -1,41 +1,24 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-
-try:
-    from urllib import urlencode
-except:
-    from urllib.parse import urlencode
-
-import requests
-import json
-import inspect
-from .itoken import iToken
-from .constants import Environment, Endpoints
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
 class Product(Endpoint):
-    """docstring for Product"""
-
-    itoken = ""
-
-    def __init__(self, itoken=iToken()):
-        if not isinstance(itoken, iToken):
-            raise Exception("itoken, must be an iTokenInstance")
-
-        Product.itoken = itoken
 
     @classmethod
-    def Get(self,
-            limit=None,
-            offset=None,
-            fields=None,
-            expand=None,
-            name=None,
-            ledgeraccount=None,
-            costcenter=None,
-            producttypeid=None,
-            state=None):
+    def Get(
+        self,
+        limit=None,
+        offset=None,
+        fields=None,
+        expand=None,
+        name=None,
+        ledgeraccount=None,
+        costcenter=None,
+        producttypeid=None,
+        state=None
+    ):
         # lista de productos
 
         # Parametros
@@ -61,30 +44,18 @@ class Product(Endpoint):
         # GET /v1/products.json?expand=[product_type]
 
         # get all parameters
-        frame = inspect.currentframe()
-        args, _, _, values = inspect.getargvalues(frame)
-        arguments = dict()
-
-        for x in args:
-            if x != 'self':
-                if values[x] is not None:
-                    arguments[x] = values[x]
-
-        # concatena dic en limit=10&offset=0 por ejemplo
-        params = urlencode(sorted(arguments.items()))
-
-        url = Environment.URL + 'products.json?' + params
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        return self.get(
+            Endpoints.PRODUCTS,
+            limit=limit,
+            offset=offset,
+            fields=fields,
+            expand=expand,
+            name=name,
+            ledgeraccount=ledgeraccount,
+            costcenter=costcenter,
+            producttypeid=producttypeid,
+            state=state
+        )
 
     @classmethod
     def GetOneProduct(self, idProduct):
@@ -97,18 +68,7 @@ class Product(Endpoint):
 
         # GET /v1/products/150.json?expand=[product_type]
 
-        url = Environment.URL + 'products/' + str(idProduct) + '.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        return self.get(Endpoints.PRODUCT_ID.format(idProduct))
 
     @classmethod
     def Create(
@@ -141,18 +101,7 @@ class Product(Endpoint):
             "stockControl": costCenter
         }
 
-        url = Environment.URL + 'products.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.post(url, data=json.dumps(data), headers=headers)
-
-        return r.json()
+        return self.post(Endpoints.PRODUCTS, data)
 
     @classmethod
     def Update(
@@ -183,18 +132,7 @@ class Product(Endpoint):
             "stockControl": stockControl
         }
 
-        url = Environment.URL + 'products/' + str(idProduct) + '.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.put(url, data=json.dumps(data), headers=headers)
-
-        return r.json()
+        return self.put(Endpoints.PRODUCT_ID.format(idProduct), data)
 
     @classmethod
     def Remove(self, idProduct):
@@ -205,18 +143,7 @@ class Product(Endpoint):
             "state": 1
         }
 
-        url = Environment.URL + 'products/' + str(idProduct) + '.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.put(url, data=json.dumps(data), headers=headers)
-
-        return r.json()
+        return self.put(Endpoints.PRODUCT_ID.format(idProduct), data)
 
     @classmethod
     def Count(self, state=0):
