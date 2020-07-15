@@ -72,11 +72,11 @@ class Endpoint(object):
         return headers
 
     @classmethod
-    def get(self, endpoint, **args):
+    def get(self, endpoint, **kargs):
         """ Perform a get to a given endpoint """
 
         instance = self.instance()
-        arguments = instance.get_arguments(**args)
+        arguments = instance.get_arguments(**kargs)
         # concatena dic en limit=10&offset=0 por ejemplo
         url = instance.generate_url(endpoint, arguments)
         headers = instance.generate_headers()
@@ -96,4 +96,30 @@ class Endpoint(object):
 
         # perform request
         r = requests.post(url, headers=headers, data=data)
+        return r.json()
+
+    @classmethod
+    def put(self, endpoint, params):
+        """ Perform a post to a given endpoint """
+        instance = self.instance()
+
+        url = instance.generate_url(endpoint)
+        headers = instance.generate_headers()
+        data = json.dumps(params)
+
+        # perform request
+        r = requests.put(url, headers=headers, data=data)
+        return r.json()
+
+    @classmethod
+    def delete(self, endpoint, **kargs):
+        """ Perform a post to a given endpoint """
+        instance = self.instance()
+        arguments = instance.get_arguments(**kargs)
+        # concatena dic en limit=10&offset=0 por ejemplo
+        url = instance.generate_url(endpoint, arguments)
+        headers = instance.generate_headers()
+
+        # perform request
+        r = requests.delete(url, headers=headers)
         return r.json()
