@@ -22,9 +22,9 @@ class Endpoints(object):
 
     DOCUMENT_TYPES = "document_types.json"
     DOCUMENT_TYPES_ID = "document_types/{}.json"
-    COUNT_DOCUMENT_TYPES = "document_types/count.json"
     DOCUMENT_TYPES_CAF = "document_types/caf.json"
     DOCUMENT_TYPES_NUMBER_AVAILBLES = "document_types/number_availables.json"
+    COUNT_DOCUMENT_TYPES = "document_types/count.json"
 
     DOCUMENT_SET_SII_STATE = "documents/set_sii_state.json"
 
@@ -32,8 +32,9 @@ class Endpoints(object):
     USERS_SALES_SUMMARY = "users/sales_summary.json"
 
     VARIANTS = "variants.json"
-    COUNT_VARIANTS = "variants/count.json"
     VARIANT_ID = "variants/{}.json"
+    VARIANT_ID_SERIAL = "variants/{}/serials.json"
+    COUNT_VARIANTS = "variants/count.json"
 
     PRICE_LISTS = "price_lists.json"
     PRICE_LISTS_ID = "price_lists/{}.json"
@@ -43,8 +44,8 @@ class Endpoints(object):
 
     PAYMENT_TYPES = "payment_types.json"
     PAYMENT_TYPES_ID = "payment_types/{}.json"
-    COUNT_PAYMENT_TYPES = "payment_types/count.json"
     PAYMENT_TYPES_DINAMIC_ATTR = "payment_types/{}/dynamic_attributes.json"
+    COUNT_PAYMENT_TYPES = "payment_types/count.json"
 
     PAYMENTS = "payments.json"
     PAYMENTS_ID = "payments/{}.json"
