@@ -1,10 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import requests
-import json
-
-from .constants import Environment, Endpoints
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
@@ -39,18 +36,20 @@ class DocumentType(Endpoint):
     }
 
     """
-    def getList(self,
-                limit=25,
-                offset=0,
-                fields=None,
-                expand=None,
-                name=None,
-                codesii=None,
-                ledgeraccount=None,
-                booktypeid=None,
-                iselectronicdocument=None,
-                issalesnote=None,
-                state=0):
+    def getList(
+        self,
+        limit=25,
+        offset=0,
+        fields=None,
+        expand=None,
+        name=None,
+        codesii=None,
+        ledgeraccount=None,
+        booktypeid=None,
+        iselectronicdocument=None,
+        issalesnote=None,
+        state=0
+    ):
         """ GET lista de tipos de documentos en bsale
             Args:
                 limit                 (int)    : limita la cantidad de items
@@ -196,9 +195,10 @@ class DocumentType(Endpoint):
         )
 
     def getOne(
-            self,
-            document_id,
-            expand=None):
+        self,
+        document_id,
+        expand=None
+    ):
         """ GET tipo de documento por id en bsale
             Args:
                 document_id     (int)  : id del tipo de documento
