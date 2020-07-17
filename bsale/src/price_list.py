@@ -1,9 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import requests
-import json
-
-from .constants import Endpoints, Environment
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
@@ -20,18 +17,23 @@ class PriceList(Endpoint):
         coinid=None,
         state=None
     ):
-        # limit, limita la cantidad de items de una respuesta JSON, si no se envía el limit es 25.
-        # offset, permite paginar los items de una respuesta JSON, si no se envía el offset es 0.
+        """
+        # limit, limita la cantidad de items de una respuesta JSON,
+          si no se envía el limit es 25.
+        # offset, permite paginar los items de una respuesta JSON,
+          si no se envía el offset es 0.
         # fields, solo devolver atributos específicos de un recurso
         # expand, permite expandir instancias y colecciones.
         # name, Permite filtrar por nombre de la lista de precio.
         # coinid, filtra por la moneda.
-        # state, boolean (0 o 1) indica si las listas de precio están activas(0) o inactivas (1).
+        # state, boolean (0 o 1) indica si las listas de precio están
+          activas(0) o inactivas (1).
 
         # GET /v1/price_lists.json?limit=10&offset=0
         # GET /v1/price_lists.json?fields=[name,description,state]
         # GET /v1/price_lists.json?coinid=1
         # GET /v1/price_lists.json?expand=[coin,details]
+        """
 
         return self.get(
             Endpoints.PRICE_LISTS,
@@ -105,7 +107,6 @@ class PriceList(Endpoint):
         return self.get(
             Endpoints.PRICE_LIST_ID_DETAILS_ID.format(price_list_id, detail_id)
         )
-        pass
 
     @classmethod
     def UpdateDetail(
@@ -119,15 +120,9 @@ class PriceList(Endpoint):
             'variantValue': variantValue
         }
 
-        url = Environment.URL + Endpoints.PRICE_LIST_ID_DETAILS_ID.format(price_list_id, detail_id)
-
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-        r = requests.put(url, headers=headers, data=json.dumps(params))
-
-        return r.json()
+        return self.put(
+            Endpoints.PRICE_LIST_ID_DETAILS_ID.format(
+                price_list_id, detail_id
+            ),
+            params
+        )

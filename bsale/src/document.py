@@ -167,7 +167,7 @@ class Document(Endpoint):
         #   "stockControl": costCenter
         # }
 
-        return self.post(Endpoint.DOCUMENTS, params)
+        return self.post(Endpoints.DOCUMENTS, params)
 
     @classmethod
     def UpdateStateSII(self, idDocument, state):
@@ -187,7 +187,7 @@ class Document(Endpoint):
             "informedSii": state
         }
 
-        return self.put(Endpoint.DOCUMENT_SET_SII_STATE, data)
+        return self.put(Endpoints.DOCUMENT_SET_SII_STATE, data)
 
     @classmethod
     def DeleteDocument(self, idDocument, officeid):
@@ -195,7 +195,7 @@ class Document(Endpoint):
         # TODO: Adaptar lpibsale
 
         return self.delete(
-            Endpoint.DOCUMENT_ID.format(idDocument),
+            Endpoints.DOCUMENT_ID.format(idDocument),
             officeId=officeid
         )
 
@@ -215,4 +215,4 @@ class Document(Endpoint):
         #   "type": 1
         # }
 
-        return self.post(Endpoint.RETURNS, params)
+        return self.post(Endpoints.RETURNS, params)

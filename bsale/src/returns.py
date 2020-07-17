@@ -1,10 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import requests
-import json
-
-from .constants import Environment, Endpoints
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
@@ -70,7 +67,7 @@ class Returns(Endpoint):
                                             de un recurso]
                 expand               (list) : permite expandir instancias
                                             y colecciones.
-                returndate           (str)  :Permite filtrar por 
+                returndate           (str)  : Permite filtrar por
                                             fecha de devolución.
                 code                 (str)  : filtra por código de la
                                             devolución.
