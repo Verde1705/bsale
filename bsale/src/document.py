@@ -192,7 +192,6 @@ class Document(Endpoint):
     @classmethod
     def DeleteDocument(self, idDocument, officeid):
         # DELETE /v1/documents/[idDocument].json?officeid=[office_id]
-        # TODO: Adaptar lpibsale
 
         return self.delete(
             Endpoints.DOCUMENT_ID.format(idDocument),

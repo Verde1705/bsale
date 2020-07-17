@@ -79,12 +79,12 @@ class Endpoint(object):
 
         return headers
 
+    @classmethod
     @retry(
         retry_on_exception=retry_if_value_error,
         stop_max_attempt_number=stop_max_attempt_number,
         wait_fixed=wait_fixed
     )
-    @classmethod
     def get(self, endpoint, **kargs):
         """ Perform a get to a given endpoint """
 
@@ -98,12 +98,12 @@ class Endpoint(object):
         r = requests.get(url, headers=headers)
         return r.json()
 
+    @classmethod
     @retry(
         retry_on_exception=retry_if_value_error,
         stop_max_attempt_number=stop_max_attempt_number,
         wait_fixed=wait_fixed
     )
-    @classmethod
     def post(self, endpoint, params):
         """ Perform a post to a given endpoint """
         instance = self.instance()
@@ -116,12 +116,12 @@ class Endpoint(object):
         r = requests.post(url, headers=headers, data=data)
         return r.json()
 
+    @classmethod
     @retry(
         retry_on_exception=retry_if_value_error,
         stop_max_attempt_number=stop_max_attempt_number,
         wait_fixed=wait_fixed
     )
-    @classmethod
     def put(self, endpoint, params):
         """ Perform a post to a given endpoint """
         instance = self.instance()
@@ -134,12 +134,12 @@ class Endpoint(object):
         r = requests.put(url, headers=headers, data=data)
         return r.json()
 
+    @classmethod
     @retry(
         retry_on_exception=retry_if_value_error,
         stop_max_attempt_number=stop_max_attempt_number,
         wait_fixed=wait_fixed
     )
-    @classmethod
     def delete(self, endpoint, **kargs):
         """ Perform a post to a given endpoint """
         instance = self.instance()
@@ -149,5 +149,4 @@ class Endpoint(object):
         headers = instance.generate_headers()
 
         # perform request
-        r = requests.delete(url, headers=headers)
-        return r.json()
+        return requests.delete(url, headers=headers)
