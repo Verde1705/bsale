@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='bsale',
-    version='1.0',
+    version='1.1.0',
     description='bsale api client',
     author='Estefany Campos',
     author_email='estefany@loadingplay.com',
