@@ -1,45 +1,33 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-try:
-    from urllib import urlencode
-except Exception:
-    from urllib.parse import urlencode
-
-import requests
-import json
-import inspect
-
-from .itoken import iToken
-from .constants import Environment
+from .constants import Endpoints
+from .endpoint import Endpoint
 
 
-class Clients():
-
-    itoken = ""
-
-    def __init__(self, itoken):
-        if not isinstance(itoken, iToken):
-            raise Exception("itoken, must be an iTokenInstance")
-
-        Clients.itoken = itoken
+class Clients(Endpoint):
 
     @classmethod
-    def Get(self,
-            limit=None,
-            offset=None,
-            fields=None,
-            expand=None,
-            code=None,
-            firstname=None,
-            lastname=None,
-            paymenttypeid=None,
-            salesconditionid=None,
-            state=None):
+    def Get(
+        self,
+        limit=None,
+        offset=None,
+        fields=None,
+        expand=None,
+        code=None,
+        firstname=None,
+        lastname=None,
+        paymenttypeid=None,
+        salesconditionid=None,
+        state=None
+    ):
+        """
         # Parametros
 
-        # limit, limita la cantidad de items de una respuesta JSON, si no se envía el limit es 25.
-        # offset, permite paginar los items de una respuesta JSON, si no se envía el offset es 0.
+        # limit, limita la cantidad de items de una respuesta JSON,
+          si no se envía el limit es 25.
+        # offset, permite paginar los items de una respuesta JSON,
+          si no se envía el offset es 0.
         # fields, solo devolver atributos específicos de un recurso
         # expand, permite expandir instancias y colecciones.
         # code, Permite filtrar por rut del cliente.
@@ -48,7 +36,8 @@ class Clients():
         # email, filtra los clientes por email.
         # paymenttypeid, recupera los clientes con forma de pago.
         # salesconditionid, recupera los clientes por la condición de venta.
-        # state, boolean (0 o 1) indica si los clientes están activos(0) inactivos (1).
+        # state, boolean (0 o 1) indica si los clientes están
+          activos(0) inactivos (1).
 
         # Ejemplos
 
@@ -57,32 +46,21 @@ class Clients():
         # GET /v1/clients.json?code=1-9
         # GET /v1/clients.json?paymenttypeid=1
         # GET /v1/clients.json?expand=[contacts,attributes,payment_type]
+        """
 
-        # get all parameters
-        frame = inspect.currentframe()
-        args, _, _, values = inspect.getargvalues(frame)
-        arguments = dict()
-
-        for x in args:
-            if x != 'self':
-                if values[x] is not None:
-                    arguments[x] = values[x]
-
-        # concatena dic en limit=10&offset=0 por ejemplo
-        params = urlencode(sorted(arguments.items()))
-
-        url = Environment.URL + 'clients.json?' + params
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        return self.get(
+            Endpoints.CLIENTS,
+            limit=limit,
+            offset=offset,
+            fields=fields,
+            expand=expand,
+            code=code,
+            firstname=firstname,
+            lastname=lastname,
+            paymenttypeid=paymenttypeid,
+            salesconditionid=salesconditionid,
+            state=state
+        )
 
     @classmethod
     def Create(self, params):
@@ -106,20 +84,9 @@ class Clients():
         #   "code": "2-7"
         # }
 
-        url = Environment.URL + 'clients.json'
-        access_token = self.itoken.getToken()
+        return self.post(Endpoints.CLIENTS, params)
 
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
-
-    def Update(seff, params, clientId):
+    def Update(self, params, clientId):
         # Ejemplo de estructura JSON que recibe
 
         # {
@@ -139,17 +106,4 @@ class Clients():
         #  ]
         # }
 
-        # print "dataaaaa   -----  {}".format(params)
-
-        url = Environment.URL + 'clients/' + clientId + '.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
+        return self.post(Endpoints.CLIENT_ID.format(clientId), params)

@@ -14,6 +14,7 @@ setup(
     install_requires=[
         "requests",
         "python-http-client",
-        "httmock"
+        "httmock",
+        "retrying"
     ],
 )

@@ -42,7 +42,8 @@ class VariantTestCase(unittest.TestCase):
 
         with HTTMock(mock_api_bsale):
             self.variant = bsale.Variant()
-            variant = self.variant.Remove("1")
+            response = self.variant.Remove("1")
+            variant = response.json()
 
             # check if fields exists
             self.assertIn("id", variant)

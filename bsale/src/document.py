@@ -1,33 +1,33 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import requests
-import json
 
-from .constants import Environment, Endpoints
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
 class Document(Endpoint):
 
     @classmethod
-    def Get(self,
-            limit=25,
-            offset=0,
-            fields=None,
-            expand=None,
-            emissiondate=None,
-            expirationdate=None,
-            emissiondaterange=None,
-            number=None,
-            token=None,
-            documenttypeid=None,
-            clientid=None,
-            clientcode=None,
-            officeid=None,
-            saleconditionid=None,
-            informedsii=None,
-            referencenumber=None,
-            state=0):
+    def Get(
+        self,
+        limit=25,
+        offset=0,
+        fields=None,
+        expand=None,
+        emissiondate=None,
+        expirationdate=None,
+        emissiondaterange=None,
+        number=None,
+        token=None,
+        documenttypeid=None,
+        clientid=None,
+        clientcode=None,
+        officeid=None,
+        saleconditionid=None,
+        informedsii=None,
+        referencenumber=None,
+        state=0
+    ):
 
         # GET /v1/documents.json retorna todos los documentos.
 
@@ -89,7 +89,8 @@ class Document(Endpoint):
         # GET /v1/documents/421.json?expand=[document_type,office]
         return self.get(
             Endpoints.DOCUMENT_ID.format(idDocument),
-            expand=expand)
+            expand=expand
+        )
 
     @classmethod
     def GetDetailDocument(self, idDocument):
@@ -166,18 +167,7 @@ class Document(Endpoint):
         #   "stockControl": costCenter
         # }
 
-        url = Environment.URL + 'documents.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
+        return self.post(Endpoints.DOCUMENTS, params)
 
     @classmethod
     def UpdateStateSII(self, idDocument, state):
@@ -197,34 +187,16 @@ class Document(Endpoint):
             "informedSii": state
         }
 
-        url = Environment.URL + 'documents/set_sii_state.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.put(url, data=json.dumps(data), headers=headers)
-
-        return r.json()
+        return self.put(Endpoints.DOCUMENT_SET_SII_STATE, data)
 
     @classmethod
     def DeleteDocument(self, idDocument, officeid):
         # DELETE /v1/documents/[idDocument].json?officeid=[office_id]
 
-        url = Environment.URL + 'documents/' + str(idDocument) \
-            + '.json?officeId=' + str(officeid)
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-        r = requests.delete(url, headers=headers)
-        return r
+        return self.delete(
+            Endpoints.DOCUMENT_ID.format(idDocument),
+            officeId=officeid
+        )
 
     @classmethod
     def CreateCreditNote(self, params):
@@ -242,15 +214,4 @@ class Document(Endpoint):
         #   "type": 1
         # }
 
-        url = Environment.URL + 'returns.json'
-        access_token = self.itoken.getToken()
-
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'access_token': access_token
-        }
-
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
+        return self.post(Endpoints.RETURNS, params)

@@ -1,40 +1,23 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-
-try:
-    from urllib import urlencode
-except:
-    from urllib.parse import urlencode
-
-import requests
-import json
-import inspect
-
-from .itoken import iToken
-from .constants import Endpoints, Environment
+from .constants import Endpoints
 from .endpoint import Endpoint
 
 
 class Stock(Endpoint):
 
-    itoken = ""
-
-    def __init__(self, itoken):
-        if not isinstance(itoken, iToken):
-            raise Exception("itoken, must be an iTokenInstance")
-
-        Stock.itoken = itoken
-
     @classmethod
-    def Get(self,
-            limit=None,
-            offset=None,
-            fields=None,
-            expand=None,
-            officeid=None,
-            variantid=None,
-            code=None,
-            barcode=None):
+    def Get(
+        self,
+        limit=None,
+        offset=None,
+        fields=None,
+        expand=None,
+        officeid=None,
+        variantid=None,
+        code=None,
+        barcode=None
+    ):
         # lista de stock
 
         # Parametros
@@ -57,28 +40,17 @@ class Stock(Endpoint):
         # GET /v1/stocks.json?expand=[office,variant]
 
         # get all parameters
-        frame = inspect.currentframe()
-        args, _, _, values = inspect.getargvalues(frame)
-        arguments = dict()
-
-        for x in args:
-            if x != 'self':
-                if values[x] is not None:
-                    arguments[x] = values[x]
-
-        # concatena dic en limit=10&offset=0 por ejemplo
-        params = urlencode(sorted(arguments.items()))
-
-        url = Environment.URL + 'stocks.json?' + params
-        access_token = self.itoken.getToken()
-
-        headers = {'Content-type': 'application/json',
-                   'Accept': 'application/json',
-                   'access_token': access_token}
-
-        r = requests.get(url, headers=headers)
-
-        return r.json()
+        return self.get(
+            Endpoints.STOCKS,
+            limit=limit,
+            offset=offset,
+            fields=fields,
+            expand=expand,
+            officeid=officeid,
+            variantid=variantid,
+            code=code,
+            barcode=barcode
+        )
 
     @classmethod
     def AddStock(self, params):
@@ -98,16 +70,8 @@ class Stock(Endpoint):
         #     }
         #   ],
         # }
-        url = Environment.URL + 'stocks/receptions.json'
-        access_token = self.itoken.getToken()
 
-        headers = {'Content-type': 'application/json',
-                   'Accept': 'application/json',
-                   'access_token': access_token}
-
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
+        return self.post(Endpoints.STOCK_RECEPTIONS, params)
 
     @classmethod
     def RemoveStock(self, params):
@@ -126,16 +90,7 @@ class Stock(Endpoint):
         #   ]
         # }
 
-        url = Environment.URL + 'stocks/consumptions.json'
-        access_token = self.itoken.getToken()
-
-        headers = {'Content-type': 'application/json',
-                   'Accept': 'application/json',
-                   'access_token': access_token}
-
-        r = requests.post(url, data=json.dumps(params), headers=headers)
-
-        return r.json()
+        return self.post(Endpoints.STOCK_CONSUMPTIONS, params)
 
     @classmethod
     def GetOneReception(

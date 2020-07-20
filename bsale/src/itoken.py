@@ -5,7 +5,5 @@
 class iToken(object):
 
     def getToken(self):
-        """
-        override this method
-        """
+        """ override this method """
         pass
