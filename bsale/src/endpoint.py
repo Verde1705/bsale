@@ -96,6 +96,10 @@ class Endpoint(object):
 
         # perform request
         r = requests.get(url, headers=headers)
+
+        if r.status_code == 403:
+            return {"error": "Forbidden"}
+
         return r.json()
 
     @classmethod
@@ -114,6 +118,10 @@ class Endpoint(object):
 
         # perform request
         r = requests.post(url, headers=headers, data=data)
+
+        if r.status_code == 403:
+            return {"error": "Forbidden"}
+
         return r.json()
 
     @classmethod
@@ -132,6 +140,10 @@ class Endpoint(object):
 
         # perform request
         r = requests.put(url, headers=headers, data=data)
+
+        if r.status_code == 403:
+            return {"error": "Forbidden"}
+
         return r.json()
 
     @classmethod
