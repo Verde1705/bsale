@@ -36,6 +36,7 @@ class Endpoints(object):
     VARIANTS = "variants.json"
     VARIANT_ID = "variants/{}.json"
     VARIANT_ID_SERIAL = "variants/{}/serials.json"
+    VARIANT_ATTRIBUTES = "variants/{}/attribute_values.json"
     COUNT_VARIANTS = "variants/count.json"
 
     PRICE_LISTS = "price_lists.json"
@@ -61,6 +62,7 @@ class Endpoints(object):
 
     SHIPPINGS = "shippings.json"
     SHIPPING_ID = "shippings/{}.json"
+    SHIPPING_ID_DETAILS = "shippings/{}/details.json"
 
     OFFICES_ID = "offices/{}.json"
 
@@ -77,3 +79,9 @@ class Endpoints(object):
 
     STOCK_CONSUMPTIONS = "stocks/consumptions.json"
     STOCK_CONSUMPTIONS_ID = "stocks/consumptions/{}.json"
+
+
+    PRODUCT_TYPES = "product_types.json"
+    PRODUCT_TYPES_ID = "product_types/{}.json"
+    COUNT_PRODUCT_TYPES = "product_types/count.json"
+    PRODUCT_TYPES_ATRIBUTES = "product_types/{}/attributes.json"

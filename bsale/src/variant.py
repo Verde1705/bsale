@@ -145,3 +145,10 @@ class Variant(Endpoint):
             Endpoints.VARIANT_ID_SERIAL.format(variant_id),
             officeid=office_id
         )
+
+    @classmethod
+    def GetAttributeValues(self, variant_id, limit=None, offset=None):
+        return self.get(
+            Endpoints.VARIANT_ATTRIBUTES.format(variant_id),
+            limit=limit
+        )

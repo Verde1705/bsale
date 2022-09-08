@@ -78,7 +78,8 @@ class Product(Endpoint):
         allowDecimal=0,
         ledgerAccount="",
         costCenter="",
-        stockControl=1
+        stockControl=1,
+        productTypeId=1
     ):
         # POST /v1/products.json
         # Se debe enviar un Json con la siguiente estructura.
@@ -98,7 +99,8 @@ class Product(Endpoint):
             "allowDecimal": allowDecimal,
             "ledgerAccount": ledgerAccount,
             "costCenter": costCenter,
-            "stockControl": costCenter
+            "stockControl": costCenter,
+            "productTypeId": productTypeId
         }
 
         return self.post(Endpoints.PRODUCTS, data)

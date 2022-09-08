@@ -66,6 +66,12 @@ class Shipping(Endpoint):
         return self.get(Endpoints.SHIPPING_ID.format(idDocument))
 
     @classmethod
+    def GetOneShippingDetails(self, idDocument):
+        # GET /v1/shippings/421/details.json retorna los detalles de un documento.
+
+        return self.get(Endpoints.SHIPPING_ID_DETAILS.format(idDocument))
+
+    @classmethod
     def Create(self, params):
         # Ejemplo de estructura JSON
 
