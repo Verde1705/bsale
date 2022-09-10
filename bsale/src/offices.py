@@ -14,3 +14,14 @@ class Offices(Endpoint):
         return self.get(
             Endpoints.OFFICES_ID.format(office_id)
         )
+    
+    def Get(
+        self,
+        limit=None,
+        offset=None
+    ):
+        return self.get(
+            Endpoints.OFFICES,
+            limit=limit,
+            offset=offset
+        )
