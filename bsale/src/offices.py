@@ -18,10 +18,12 @@ class Offices(Endpoint):
     def Get(
         self,
         limit=None,
-        offset=None
+        offset=None,
+        state=None,
     ):
         return self.get(
             Endpoints.OFFICES,
             limit=limit,
-            offset=offset
+            offset=offset,
+            state=state,
         )
